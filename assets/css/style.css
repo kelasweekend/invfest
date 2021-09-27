@@ -1,0 +1,28 @@
+.primary-color {
+    background-color: #7E57C2 !important;
+    color: white;
+}
+
+.navbar-brand img {
+    padding: 10px 0;
+    width: 80%;
+}
+
+.btn-rounded {
+    border-radius: 20px;
+    padding: 8px 25px;
+}
+
+header h4 {
+    font-size: 40px;
+    margin-top: 150px;
+    margin-bottom: 30px;
+}
+
+.active a{
+    color: #7E57C2 !important;
+}
+
+.nav-link:hover {
+    color: #7E57C2 !important;
+}
