@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Lomba\KategoriController;
+use App\Http\Controllers\Setting\PembayaranController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,12 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::resource('kategori', KategoriController::class);
+        // pendaftaran
+        Route::get('pendaftaran', [App\Http\Controllers\Lomba\PendaftaranController::class, 'index'])->name('pendaftaran.index');
+        Route::post('pendaftaran', [App\Http\Controllers\Lomba\PendaftaranController::class, 'store'])->name('pendaftaran.store');
+        Route::get('pendaftaran/{invoice}', [App\Http\Controllers\Lomba\PendaftaranController::class, 'edit'])->name('pendaftaran.edit');
+        // setting 
+        Route::resource('pembayaran', PembayaranController::class);
     });
 });
 

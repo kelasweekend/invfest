@@ -1,6 +1,6 @@
 @extends('layouts.admin.index')
 @section('title')
-    Kategori Lomba
+    Setting Pembayaran
 @endsection
 
 
@@ -38,8 +38,9 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama kategori</th>
-                                            <th>Slug Kategori</th>
+                                            <th>Nama Bank</th>
+                                            <th>No Rekening</th>
+                                            <th>Atas Nama</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -49,8 +50,9 @@
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama kategori</th>
-                                            <th>Slug Kategori</th>
+                                            <th>Nama Bank</th>
+                                            <th>No Rekening</th>
+                                            <th>Atas Nama</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
@@ -69,7 +71,7 @@
 
     {{-- modal buat --}}
     <div class="modal fade" id="ajaxModel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modelHeading"></h5>
@@ -81,17 +83,19 @@
                     <form id="ItemForm" name="ItemForm" class="form-horizontal">
                         <input type="hidden" name="Item_id" id="Item_id">
                         <div class="mb-2">
-                            <label for="nama_kategori" class="form-label">Title </label>
-                            <input type="text" name="nama_kategori" class="form-control" id="nama_kategori"
-                                placeholder="E.g IF 07 K" autocomplete="off" required>
+                            <label for="nama_bank" class="form-label">Nama Bank</label>
+                            <input type="text" name="nama_bank" class="form-control" id="nama_bank"
+                                placeholder="E.g Bank Indonesia" autocomplete="off" required>
                         </div>
                         <div class="mb-2">
-                            <label for="description">Deskripsi singkat</label>
-                            <textarea class="form-control" name="deskripsi" id="description"></textarea>
+                            <label for="nomor_rekening" class="form-label">Nomor Rekening</label>
+                            <input type="number" name="nomor_rekening" class="form-control" id="nomor_rekening"
+                                placeholder="E.g 0701471341" autocomplete="off" required>
                         </div>
                         <div class="mb-2">
-                            <label for="description">Isi Kategori</label>
-                            <textarea class="form-control summernote" name="body" id="description"></textarea>
+                            <label for="atas_nama" class="form-label">Atas Nama </label>
+                            <input type="text" name="atas_nama" class="form-control" id="atas_nama"
+                                placeholder="E.g Budi Kuu" autocomplete="off" required>
                         </div>
                         <button class="btn btn-secondary tombol float-right" id="saveBtn" value="create"></button>
                     </form>
@@ -103,12 +107,14 @@
 
 
 @section('css-tambahan')
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
 @endsection
 
 @section('js-tambahan')
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <!-- DataTables  & Plugins -->
     <script src="{{ asset('backend/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -116,6 +122,9 @@
     <script src="{{ asset('backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <!-- Page specific script -->
     <script type="text/javascript">
+        $(document).ready(function() {
+            $('.summernote').summernote();
+        });
         $(function() {
             $.ajaxSetup({
                 headers: {
@@ -125,7 +134,7 @@
             var table = $('.datatable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('kategori.index') }}",
+                ajax: "{{ route('pembayaran.index') }}",
                 pageLength: 5,
                 lengthMenu: [5, 10, 20, 50, 100, 200, 500],
                 responsive: true,
@@ -136,12 +145,16 @@
                         name: 'DT_RowIndex'
                     },
                     {
-                        data: 'nama_kategori',
-                        name: 'nama_kategori'
+                        data: 'nama_bank',
+                        name: 'nama_bank'
                     },
                     {
-                        data: 'slug_kategori',
-                        name: 'slug_kategori'
+                        data: 'nomor_rekening',
+                        name: 'nomor_rekening'
+                    },
+                    {
+                        data: 'atas_nama',
+                        name: 'atas_nama'
                     },
                     {
                         data: 'action',
@@ -155,16 +168,31 @@
                 $('#saveBtn').val("create-Item");
                 $('#Item_id').val('');
                 $('#ItemForm').trigger("reset");
-                $('#modelHeading').html("Buat Pembayaran");
+                $('#modelHeading').html("Buat Kategori");
                 $('.tombol').html("Submit");
                 $('#ajaxModel').modal('show');
+            });
+
+            $('body').on('click', '.editItem', function() {
+                var Item_id = $(this).data('id');
+                var url = $(this).data('url');
+                $('.tombol').html("Save Change");
+                $.get(url, function(data) {
+                    $('#modelHeading').html("Edit kelas");
+                    $('#saveBtn').val("edit-user");
+                    $('#ajaxModel').modal('show');
+                    $('#Item_id').val(data.id);
+                    $('input[name=nama_kategori]').val(data.nama_kategori);
+                    $('.summernote').html(data.body);
+                    console.log(data.body);
+                })
             });
 
             $('#saveBtn').click(function(e) {
                 e.preventDefault();
                 $.ajax({
                     data: $('#ItemForm').serialize(),
-                    url: "{{ route('kategori.store') }}",
+                    url: "{{ route('pembayaran.store') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function(response) {

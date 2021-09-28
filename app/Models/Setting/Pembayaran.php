@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Models\Lomba;
+namespace App\Models\Setting;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kategori extends Model
+class Pembayaran extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'nama_kategori',
-        'slug_kategori',
-        'deskripsi',
-        'body',
+        'nama_bank',
+        'nomor_rekening',
+        'atas_nama',
     ];
+
 }

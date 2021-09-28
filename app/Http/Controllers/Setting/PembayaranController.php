@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Lomba;
+namespace App\Http\Controllers\Setting;
 
 use App\Http\Controllers\Controller;
-use App\Models\Lomba\Kategori;
+use App\Models\Setting\Pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
-class KategoriController extends Controller
+class PembayaranController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,19 +19,18 @@ class KategoriController extends Controller
     {
         if ($request->ajax()) {
             # jika request berasal dari ajax
-            $data = Kategori::all();
-            return Datatables::of($data)
+            $data = Pembayaran::all();
+            return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" data-url="' . route('kategori.edit', $row->id) . '" class="edit btn btn-primary btn-sm editItem"><i class="fas fa-edit"></i></a>';
-                    $actionBtn = $actionBtn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-url="' . route('kategori.destroy', $row->id) . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteItem"><i class="fas fa-trash"></i></a>';
+                    $actionBtn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-url="' . route('pembayaran.destroy', $row->id) . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteItem"><i class="fas fa-trash"></i> Delete</a>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
 
-        return view('admin.kategori.index');
+        return view('setting.pembayaran');
     }
     /**
      * Store a newly created resource in storage.
@@ -42,25 +41,24 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama_kategori' => 'required',
-            'body' => 'required',
-            'deskripsi' => 'required|string|max:100'
+            'nama_bank' => 'required',
+            'atas_nama' => 'required',
+            'nomor_rekening' => 'required|string|max:100'
         ]);
         
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
-        Kategori::create([
-            'nama_kategori' => $request->nama_kategori,
+        Pembayaran::create([
+            'nama_bank' => $request->nama_bank,
             'slug_kategori' => str_replace(' ', '-', $request->nama_kategori),
-            'deskripsi' => $request->deskripsi,
-            'body' => $request->body
+            'nomor_rekening' => $request->nomor_rekening,
+            'atas_nama' => $request->atas_nama
         ]);
 
-        return response()->json(['success'=>'Kategori Berhasil ditambahkan']);
+        return response()->json(['success'=>'Pembayaran Berhasil ditambahkan']);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -69,7 +67,7 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        $item = Kategori::find($id);
+        $item = Pembayaran::find($id);
         return response()->json($item);
     }
     /**
@@ -80,8 +78,7 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        Kategori::find($id)->delete();
-
-        return response()->json(['success'=>'Kategori deleted successfully']);
+        Pembayaran::find($id)->delete();
+        return response()->json(['success'=> 'Pembayaran deleted successfully']);
     }
 }
