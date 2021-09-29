@@ -34,7 +34,7 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Jumlah Pendaftar</span>
-                                <span class="info-box-number">1,410</span>
+                                <span class="info-box-number">{{$pendaftar}} Team</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -73,7 +73,7 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Kategori Lomba</span>
-                                <span class="info-box-number">93,139</span>
+                                <span class="info-box-number">{{$kategori}} Item</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
