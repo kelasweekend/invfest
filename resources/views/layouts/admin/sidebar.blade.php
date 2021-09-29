@@ -24,6 +24,18 @@
                         <p>Setting Pembayaran</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('sponsor.index')}}" class="nav-link {{ Request::segment(2) === 'sponsor' ? 'active' : null }}">
+                        <i class="nav-icon fas fa-hands-helping"></i>
+                        <p>Sponsor Event</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('medpart.index')}}" class="nav-link {{ Request::segment(2) === 'medpart' ? 'active' : null }}">
+                        <i class="nav-icon fas fa-ad"></i>
+                        <p>Media Partner Event</p>
+                    </a>
+                </li>
                 <li class="nav-header">Event Lomba</li>
                 <li class="nav-item">
                     <a href="{{route('kategori.index')}}" class="nav-link {{ Request::segment(2) === 'kategori' ? 'active' : null }}">
@@ -35,6 +47,12 @@
                     <a href="{{route('pendaftaran.index')}}" class="nav-link {{ Request::segment(2) === 'pendaftaran' ? 'active' : null }}">
                         <i class="nav-icon fas fa-table"></i>
                         <p>Data Pendaftar</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('timeline.index')}}" class="nav-link {{ Request::segment(2) === 'timeline' ? 'active' : null }}">
+                        <i class="nav-icon fas fa-clipboard-list"></i>
+                        <p>Timeline Lomba</p>
                     </a>
                 </li>
             </ul>

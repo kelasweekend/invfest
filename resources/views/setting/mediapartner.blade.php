@@ -1,6 +1,6 @@
 @extends('layouts.admin.index')
 @section('title')
-    Kategori Lomba
+    MediaPartner Lomba
 @endsection
 
 
@@ -39,8 +39,8 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama kategori</th>
-                                            <th>Slug Kategori</th>
+                                            <th>Nama Sponsor</th>
+                                            <th>Image</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -50,8 +50,8 @@
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama kategori</th>
-                                            <th>Slug Kategori</th>
+                                            <th>Nama Sponsor</th>
+                                            <th>Image</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
@@ -68,9 +68,8 @@
         <!-- /.content -->
     </div>
 
-    {{-- modal buat --}}
     <div class="modal fade" id="ajaxModel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modelHeading"></h5>
@@ -79,39 +78,34 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="ItemForm" name="ItemForm" class="form-horizontal">
-                        <input type="hidden" name="Item_id" id="Item_id">
+                    <form method="POST" enctype="multipart/form-data" id="laravel-ajax-file-upload"
+                        action="javascript:void(0)">
                         <div class="mb-2">
-                            <label for="nama_kategori" class="form-label">Title </label>
-                            <input type="text" name="nama_kategori" class="form-control" id="nama_kategori"
-                                placeholder="E.g IF 07 K" autocomplete="off" required>
+                            <label for="nama_media_partner" class="form-label">Nama Media Partner</label>
+                            <input type="text" name="nama_media_partner" class="form-control" id="nama_media_partner"
+                                placeholder="E.g Event Asik" autocomplete="off" required>
                         </div>
-                        <div class="mb-2">
-                            <label for="body">Deskripsi singkat</label>
-                            <textarea class="form-control" name="deskripsi" id="description"></textarea>
+                        <div class="mb-3">
+                            <label for="pelajaran" class="form-label">Upload File</label>
+                            <div class="custom-file">
+                                <input type="file" name="file" class="custom-file-input" id="file">
+                                <label class="custom-file-label" for="file">Pilih File</label>
+                            </div>
                         </div>
-                        <div class="mb-2">
-                            <label for="body">Isi Kategori</label>
-                            <textarea class="form-control summernote" name="body" id="body"></textarea>
-                        </div>
-                        <button class="btn btn-secondary tombol float-right" id="saveBtn" value="create"></button>
+                        <button class="btn btn-secondary tombol float-right" type="submit" value="create"></button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 @endsection
-
-
 @section('css-tambahan')
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
 @endsection
 
 @section('js-tambahan')
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <!-- DataTables  & Plugins -->
     <script src="{{ asset('backend/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -119,9 +113,6 @@
     <script src="{{ asset('backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <!-- Page specific script -->
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('.summernote').summernote();
-        });
         $(function() {
             $.ajaxSetup({
                 headers: {
@@ -131,23 +122,23 @@
             var table = $('.datatable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('kategori.index') }}",
+                ajax: "{{ route('medpart.index') }}",
                 pageLength: 5,
                 lengthMenu: [5, 10, 20, 50, 100, 200, 500],
                 responsive: true,
                 lengthChange: true,
-                autoWidth: false,
+                autoWidth: true,
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex'
                     },
                     {
-                        data: 'nama_kategori',
-                        name: 'nama_kategori'
+                        data: 'nama_media_partner',
+                        name: 'nama_media_partner'
                     },
                     {
-                        data: 'slug_kategori',
-                        name: 'slug_kategori'
+                        data: 'image',
+                        name: 'image'
                     },
                     {
                         data: 'action',
@@ -161,56 +152,36 @@
                 $('#saveBtn').val("create-Item");
                 $('#Item_id').val('');
                 $('#ItemForm').trigger("reset");
-                $('#modelHeading').html("Buat Kategori");
+                $('#modelHeading').html("Tambah Media Partner");
                 $('.tombol').html("Submit");
                 $('#ajaxModel').modal('show');
             });
 
-            $('body').on('click', '.editItem', function() {
-                var Item_id = $(this).data('id');
-                var url = $(this).data('url');
-                $('.tombol').html("Save Change");
-                $.get(url, function(data) {
-                    $('#modelHeading').html("Edit Kategori");
-                    $('#saveBtn').val("edit-user");
-                    $('#ajaxModel').modal('show');
-                    $('#Item_id').val(data.id);
-                    $('input[name=nama_kategori]').val(data.nama_kategori);
-                    $("textarea#description").text(data.deskripsi);
-                    $(".summernote").summernote("code", data.body);
-                })
-            });
-
-            $('#saveBtn').click(function(e) {
+            $('#laravel-ajax-file-upload').submit(function(e) {
                 e.preventDefault();
+                var formData = new FormData(this);
                 $.ajax({
-                    data: $('#ItemForm').serialize(),
-                    url: "{{ route('kategori.store') }}",
-                    type: "POST",
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.success) {
-                            Swal.fire({
-                                icon: "success",
-                                title: "Selamat",
-                                text: response.success
-                            });
-                            $('#ItemForm').trigger("reset");
-                            $('#ajaxModel').modal('hide');
-                            table.draw();
-                        } else {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Mohon Maaf !",
-                                text: response.error
-                            });
-                        }
+                    type: 'POST',
+                    url: "{{ route('medpart.store') }}",
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        this.reset();
+                        Swal.fire({
+                            icon: "success",
+                            title: "Selamat",
+                            text: data.success
+                        });
+                        $('#ajaxModel').modal('hide');
+                        table.draw();
                     },
-                    error: function() {
+                    error: function(data) {
                         Swal.fire({
                             icon: "error",
-                            title: "Oops...",
-                            text: "Something went wrong!"
+                            title: "Peringatan !",
+                            text: data.error
                         });
                     }
                 });

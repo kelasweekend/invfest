@@ -1,6 +1,6 @@
 @extends('layouts.admin.index')
 @section('title')
-    Kategori Lomba
+    Timeline Lomba
 @endsection
 
 
@@ -39,8 +39,8 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama kategori</th>
-                                            <th>Slug Kategori</th>
+                                            <th>Nama Timeline</th>
+                                            <th>Tanggal Timeline</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -50,8 +50,8 @@
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama kategori</th>
-                                            <th>Slug Kategori</th>
+                                            <th>Nama Timeline</th>
+                                            <th>Tanggal Kategori</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
@@ -70,7 +70,7 @@
 
     {{-- modal buat --}}
     <div class="modal fade" id="ajaxModel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modelHeading"></h5>
@@ -82,19 +82,20 @@
                     <form id="ItemForm" name="ItemForm" class="form-horizontal">
                         <input type="hidden" name="Item_id" id="Item_id">
                         <div class="mb-2">
-                            <label for="nama_kategori" class="form-label">Title </label>
-                            <input type="text" name="nama_kategori" class="form-control" id="nama_kategori"
-                                placeholder="E.g IF 07 K" autocomplete="off" required>
+                            <label for="nama_timeline" class="form-label">Title </label>
+                            <input type="text" name="nama_timeline" class="form-control" id="nama_timeline"
+                                placeholder="E.g Pengumpulan Karya" autocomplete="off" required>
                         </div>
                         <div class="mb-2">
-                            <label for="body">Deskripsi singkat</label>
+                            <label for="tanggal" class="form-label">Tanggal</label>
+                            <input type="date" name="tanggal" class="form-control" id="tanggal"
+                                placeholder="E.g 29/03/2021" autocomplete="off" required>
+                        </div>
+                        <div class="mb-2">
+                            <label for="description">Deskripsi singkat</label>
                             <textarea class="form-control" name="deskripsi" id="description"></textarea>
+                            <button class="btn btn-secondary tombol float-right mt-2" id="saveBtn" value="create"></button>
                         </div>
-                        <div class="mb-2">
-                            <label for="body">Isi Kategori</label>
-                            <textarea class="form-control summernote" name="body" id="body"></textarea>
-                        </div>
-                        <button class="btn btn-secondary tombol float-right" id="saveBtn" value="create"></button>
                     </form>
                 </div>
             </div>
@@ -104,14 +105,12 @@
 
 
 @section('css-tambahan')
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
 @endsection
 
 @section('js-tambahan')
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <!-- DataTables  & Plugins -->
     <script src="{{ asset('backend/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -131,7 +130,7 @@
             var table = $('.datatable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('kategori.index') }}",
+                ajax: "{{ route('timeline.index') }}",
                 pageLength: 5,
                 lengthMenu: [5, 10, 20, 50, 100, 200, 500],
                 responsive: true,
@@ -142,12 +141,12 @@
                         name: 'DT_RowIndex'
                     },
                     {
-                        data: 'nama_kategori',
-                        name: 'nama_kategori'
+                        data: 'nama_timeline',
+                        name: 'nama_timeline'
                     },
                     {
-                        data: 'slug_kategori',
-                        name: 'slug_kategori'
+                        data: 'tanggal',
+                        name: 'tanggal'
                     },
                     {
                         data: 'action',
@@ -161,7 +160,7 @@
                 $('#saveBtn').val("create-Item");
                 $('#Item_id').val('');
                 $('#ItemForm').trigger("reset");
-                $('#modelHeading').html("Buat Kategori");
+                $('#modelHeading').html("Buat Timeline");
                 $('.tombol').html("Submit");
                 $('#ajaxModel').modal('show');
             });
@@ -171,13 +170,13 @@
                 var url = $(this).data('url');
                 $('.tombol').html("Save Change");
                 $.get(url, function(data) {
-                    $('#modelHeading').html("Edit Kategori");
+                    $('#modelHeading').html("Edit Timeline");
                     $('#saveBtn').val("edit-user");
                     $('#ajaxModel').modal('show');
                     $('#Item_id').val(data.id);
-                    $('input[name=nama_kategori]').val(data.nama_kategori);
+                    $('input[name=nama_timeline]').val(data.nama_timeline);
+                    $('input[name=tanggal]').val(data.tanggal);
                     $("textarea#description").text(data.deskripsi);
-                    $(".summernote").summernote("code", data.body);
                 })
             });
 
@@ -185,7 +184,7 @@
                 e.preventDefault();
                 $.ajax({
                     data: $('#ItemForm').serialize(),
-                    url: "{{ route('kategori.store') }}",
+                    url: "{{ route('timeline.store') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function(response) {

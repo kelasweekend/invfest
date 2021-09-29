@@ -107,14 +107,12 @@
 
 
 @section('css-tambahan')
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
 @endsection
 
 @section('js-tambahan')
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <!-- DataTables  & Plugins -->
     <script src="{{ asset('backend/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -122,9 +120,6 @@
     <script src="{{ asset('backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <!-- Page specific script -->
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('.summernote').summernote();
-        });
         $(function() {
             $.ajaxSetup({
                 headers: {
@@ -168,7 +163,7 @@
                 $('#saveBtn').val("create-Item");
                 $('#Item_id').val('');
                 $('#ItemForm').trigger("reset");
-                $('#modelHeading').html("Buat Kategori");
+                $('#modelHeading').html("Buat Bank");
                 $('.tombol').html("Submit");
                 $('#ajaxModel').modal('show');
             });
@@ -178,13 +173,13 @@
                 var url = $(this).data('url');
                 $('.tombol').html("Save Change");
                 $.get(url, function(data) {
-                    $('#modelHeading').html("Edit kelas");
+                    $('#modelHeading').html("Edit Bank");
                     $('#saveBtn').val("edit-user");
                     $('#ajaxModel').modal('show');
                     $('#Item_id').val(data.id);
-                    $('input[name=nama_kategori]').val(data.nama_kategori);
-                    $('.summernote').html(data.body);
-                    console.log(data.body);
+                    $('input[name=nama_bank]').val(data.nama_bank);
+                    $('input[name=nomor_rekening]').val(data.nomor_rekening);
+                    $('input[name=atas_nama]').val(data.atas_nama);
                 })
             });
 

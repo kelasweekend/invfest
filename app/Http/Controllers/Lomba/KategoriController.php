@@ -46,19 +46,22 @@ class KategoriController extends Controller
             'body' => 'required',
             'deskripsi' => 'required|string|max:100'
         ]);
-        
+
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()->all()]);
+            return response()->json(['error' => $validator->errors()->all()]);
         }
 
-        Kategori::create([
-            'nama_kategori' => $request->nama_kategori,
-            'slug_kategori' => str_replace(' ', '-', $request->nama_kategori),
-            'deskripsi' => $request->deskripsi,
-            'body' => $request->body
-        ]);
+        Kategori::updateOrCreate(
+            ['id' => $request->Item_id],
+            [
+                'nama_kategori' => $request->nama_kategori,
+                'slug_kategori' => str_replace(' ', '-', $request->nama_kategori),
+                'deskripsi' => $request->deskripsi,
+                'body' => $request->body
+            ]
+        );
 
-        return response()->json(['success'=>'Kategori Berhasil ditambahkan']);
+        return response()->json(['success' => 'Kategori Berhasil ditambahkan']);
     }
 
     /**
@@ -82,6 +85,6 @@ class KategoriController extends Controller
     {
         Kategori::find($id)->delete();
 
-        return response()->json(['success'=>'Kategori deleted successfully']);
+        return response()->json(['success' => 'Kategori deleted successfully']);
     }
 }
