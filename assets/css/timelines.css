@@ -2,12 +2,29 @@
 	position: relative;
 	z-index: 1;
 }
+
 .single-timeline-area {
 	position: relative;
 	z-index: 1;
 	padding-left: 180px;
 }
 
+.section_heading h4 {
+	font-weight: 600 !important;
+	letter-spacing: 1px;
+}
+
+
+.timeline-text h6 {
+	font-weight: 600;
+	letter-spacing: 1px;
+	font-size: 15px;
+}
+
+.timeline-date p {
+	font-weight: 600 !important;
+	font-size: 18px;	
+}
 
 @media only screen and (max-width: 575px) {
 	.single-timeline-area {

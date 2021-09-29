@@ -21,9 +21,14 @@ body {
 	font-weight: 600 !important;
 }
 
+.nav-link:focus {
+	color: #7e57c2 !important;
+}
+
 .nav-item a {
 	margin-right: 20px;
 }
+
 .navbar-brand img {
 	padding: 10px 0;
 }
@@ -70,11 +75,6 @@ header h4 {
 .details-img {
 	background-color: #faf9fd;
 	border-radius: 20px;
-}
-
-.details span {
-	border-bottom: 2px solid white;
-	padding-bottom: 1px;
 }
 
 .footer {
