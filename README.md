@@ -1,2 +1,2 @@
 # INVFEST
-buat awal sampai deploy
+buat awal sampai deploy https://kelasweekend.github.io/invfest/
