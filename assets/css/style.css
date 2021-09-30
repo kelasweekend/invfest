@@ -5,6 +5,9 @@ body {
 	background-color: #ebf7f2;
 	user-select: none;
 }
+#kompetisi h4 {
+	letter-spacing: 2px;
+}
 
 .primary-color {
 	background-color: #7e57c2 !important;
