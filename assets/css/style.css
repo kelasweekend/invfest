@@ -93,7 +93,23 @@ header h4 {
 	margin-bottom: 10px;
 }
 
-
+/* contact */
+.contact_icon {
+	border-radius: 5px;
+	width: 44px;
+	height: 44px;
+	display: inline-block;
+	margin-bottom: 10px;
+	font-size: 22px;
+	line-height: 44px;
+	color: #ffffff !important;
+	background-color: #7e57c2;
+}
+.contact a {
+	display: block;
+	text-decoration: none;
+	color: black;
+}
 /* footer */
 .footer {
 	padding: 60px 0px 60px;
