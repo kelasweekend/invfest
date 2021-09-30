@@ -150,4 +150,10 @@ header h4 {
 	.details a {
 		width: 100%;
 	}
+
+	.sponsor-item img {
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
