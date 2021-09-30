@@ -4,6 +4,9 @@ body {
 	overflow-x: hidden;
 	background-color: #ebf7f2;
 	user-select: none;
+	overflow-x: hidden;
+	margin: 0;
+	padding: 0;
 }
 #kompetisi h4 {
 	letter-spacing: 2px;
