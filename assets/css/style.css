@@ -5,7 +5,7 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
-	background-color: #F6F8FD;
+	background-color: #f6f8fd;
 }
 /* misc */
 #kompetisi h4 {
@@ -23,6 +23,10 @@ header h4 {
 	margin-bottom: 30px;
 }
 
+.top-shadow {
+	box-shadow: 0px .125rem .25rem rgba(0,0,0,.075), 0px .125rem .25rem #888;
+}
+
 /* button */
 .btn-rounded {
 	border-radius: 20px;
@@ -36,14 +40,14 @@ header h4 {
 
 /* navbar */
 .navbar {
-	background-color: #F6F8FD !important;
+	background-color: #f6f8fd !important;
 }
 .nav-item {
 	font-size: 18px;
 	font-weight: 600 !important;
 }
 
-.nav-link:focus {
+.nav-item:focus {
 	color: #7e57c2 !important;
 }
 
@@ -63,9 +67,10 @@ header h4 {
 	color: #7e57c2 !important;
 }
 
-.active .fas{
+.active .fas {
 	color: #7e57c2 !important;
 }
+
 
 /* card */
 .card:hover {
@@ -96,7 +101,7 @@ header h4 {
 	margin: 20px 10px 10px 20px;
 	padding: 29px 10px;
 	background-color: #fff;
-	box-shadow: rgba(33,33,33,.06) 0 4px 24px 5px;
+	box-shadow: rgba(33, 33, 33, 0.06) 0 4px 24px 5px;
 	border-radius: 8px;
 	text-align: center;
 	transition: all 1s;
@@ -183,5 +188,13 @@ header h4 {
 
 	.details a {
 		width: 100%;
+	}
+
+	.register {
+		height: 100% !important;
+	}
+
+	#navbarTop {
+		position: unset;
 	}
 }
