@@ -197,7 +197,7 @@ header h4 {
 		width: 100%;
 	}
 
-	.register {
+	.register, .tracking {
 		height: 100% !important;
 	}
 

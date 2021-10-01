@@ -40,7 +40,8 @@
 			</ul>
 		</nav>
 		<!-- End of Bottom Navbar -->
-		<div class="row vh-100">
+
+		<div class="row pb-5 pb-md-0 vh-100 tracking">
 			<div
 				class="col-5 h-100 d-none d-lg-block overflow-hidden"
 				style="background-color: #7e57c2"
@@ -53,39 +54,135 @@
 					/>
 				</div>
 			</div>
-			<div class="col-lg-7 col-md-12 h-100 d-flex">
-				<div class="row px-5 w-100">
-					<div class="col-12">
-						<a class="navbar-brand" href="index.html">
-							<img
-								src="assets/img/logo.png"
-								width="120"
-								class="d-inline-block align-top position-relative"
-								alt=""
+			<div class="col-lg-7 col-md-12 overflow-auto pb-5">
+				<div class="px-5 h-100">
+					<a class="navbar-brand" href="index.html">
+						<img
+							src="assets/img/logo.png"
+							width="120"
+							class="d-inline-block align-top position-relative"
+							alt=""
+						/>
+					</a>
+					<hr class="mt-0" />
+					<h2>Track Status Pendaftaran</h2>
+					<form class="mt-2">
+						<div class="form-group">
+							<label for="inputNamaTim">Token</label>
+							<input
+								type="text"
+								class="form-control"
+								id="inputNamaTim"
+								placeholder="Masukan token pendaftaran anda"
 							/>
-						</a>
-						<hr class="mt-0" />
-					</div>
-					<div class="col-12">
-						<h2>Track Status Pendaftaran</h2>
-						<form class="mt-3">
-							<div class="form-group">
-								<label for="inputNamaTim">Token Registrasi</label>
-								<input
-									type="text"
-									class="form-control"
-									id="inputNamaTim"
-									placeholder="Masukan Token"
-								/>
+						</div>
+						<button
+							type="submit"
+							class="btn primary-color btn-rounded btn-block"
+						>
+							Submit
+						</button>
+						<fieldset disabled>
+							<div class="form-row mt-3">
+								<div class="col-sm-12 col-md">
+									<div class="form-group">
+										<label for="inputNamaTim">Email</label>
+										<input
+											type="email"
+											class="form-control"
+											id="inputNamaTim"
+											placeholder="example@mail.com"
+										/>
+									</div>
+								</div>
+								<div class="col-sm-12 col-md">
+									<div class="form-group">
+										<label for="inputNamaTim">Asal Institusi</label>
+										<input
+											type="text"
+											class="form-control"
+											id="inputNamaTim"
+											placeholder="Asal Institusi"
+										/>
+									</div>
+								</div>
 							</div>
-							<button
-								type="submit"
-								class="btn primary-color btn-rounded btn-block"
-							>
-								Submit
-							</button>
-						</form>
-					</div>
+							<div class="form-row">
+								<div class="col-sm-12 col-md">
+									<div class="form-group">
+										<label for="inputNamaTim">Nama Tim</label>
+										<input
+											type="text"
+											class="form-control"
+											id="inputNamaTim"
+											placeholder="Nama Tim"
+										/>
+									</div>
+								</div>
+								<div class="col-sm-12 col-md">
+									<div class="form-group">
+										<label for="inputNamaKetua">Nama Ketua</label>
+										<input
+											type="text"
+											class="form-control"
+											id="inputNamaKetua"
+											placeholder="Nama Ketua"
+										/>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="col-sm-12 col-md">
+									<div class="form-group">
+										<label for="inputAnggotaSatu">Anggota Satu</label>
+										<input
+											type="text"
+											class="form-control"
+											id="inputAnggotaSatu"
+											placeholder="Nama Anggota"
+										/>
+									</div>
+								</div>
+								<div class="col-sm-12 col-md">
+									<div class="form-group">
+										<label for="inputAnggotaDua">Anggota Dua</label>
+										<input
+											type="text"
+											class="form-control"
+											id="inputAnggotaDua"
+											placeholder="Nama Anggota"
+										/>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="col-sm-12 col-md">
+									<div class="form-group">
+										<label for="inputTingkatan">Tingkatan</label>
+										<input
+											type="text"
+											class="form-control"
+											id="inputAnggotaDua"
+											placeholder="Tingkatan"
+										/>
+									</div>
+								</div>
+								<div class="col-sm-12 col-md">
+									<div class="form-group">
+										<label for="inputKategori">Kategori</label>
+										<input
+											type="text"
+											class="form-control"
+											id="inputAnggotaDua"
+											placeholder="Kategori"
+										/>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</form>
 				</div>
 			</div>
 		</div>
