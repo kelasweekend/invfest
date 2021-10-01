@@ -16,29 +16,33 @@
 	</head>
 	<body>
 		<!-- Navbar -->
-		<nav class="navbar navbar-expand-lg navbar-light">
+		<nav class="navbar sticky-top navbar-expand-lg navbar-light">
 			<div class="container">
 				<!-- Navbar Logo -->
-				<a class="navbar-brand mx-auto mx-lg-0" href="#">
+				<a class="navbar-brand mx-auto mx-lg-0" data-scroll href="#">
 					<img src="assets/img/logo.png" alt="Logo" width="120" />
 				</a>
 				<!-- Navbar Menu  -->
 				<div class="d-none d-lg-block" id="navbarNav">
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active">
-							<a class="nav-link" href="#">Home</a>
+						<li class="nav-item">
+							<a class="nav-link" data-scroll href="#">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-scroll href="#details">Detail</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-scroll href="#timelines">Timeline</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-scroll href="#contact">Contact Us</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="tracking.html">Tracking</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Details</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Contact Us</a>
-						</li>
 						<a
 							class="btn btn-rounded my-sm-0 ml-auto primary-color"
+							data-scroll
 							href="register.html"
 						>
 							<span class="fas fa-user" style="margin-right: 10px"></span
@@ -51,7 +55,7 @@
 		<!-- End of Navbar -->
 
 		<!-- Header -->
-		<header>
+		<header id="header">
 			<div class="container">
 				<div class="row">
 					<div class="col">
@@ -65,7 +69,7 @@
 						<h4 class="font-weight-bolder">
 							Innovation Key to Growth Economy with Financial Technology.
 						</h4>
-						<button class="btn primary-color btn-rounded">Tentang</button>
+						<a href="#details" class="btn primary-color btn-rounded">Detail</a>
 					</div>
 				</div>
 			</div>
@@ -78,7 +82,11 @@
 				<h4 class="text-center my-5 font-weight-bold">Kompetisi</h4>
 				<div class="card-deck">
 					<div class="card shadow-sm">
-						<img src="assets/img/track.png" class="img-fluid p-5 mx-auto" alt="Mobile" />
+						<img
+							src="assets/img/mobile.svg"
+							class="img-fluid py-5 mx-auto"
+							alt="Mobile"
+						/>
 						<div class="card-body">
 							<h5 class="card-title">Mobile Apps</h5>
 							<p class="card-text">
@@ -88,7 +96,11 @@
 						</div>
 					</div>
 					<div class="card shadow-sm">
-						<img src="assets/img/timeline.png" class="img-fluid p-5 mx-auto" alt="UI/UX" />
+						<img
+							src="assets/img/ui.svg"
+							class="img-fluid py-5 w-50 mx-auto"
+							alt="UI/UX"
+						/>
 						<div class="card-body">
 							<h5 class="card-title">UI/UX</h5>
 							<p class="card-text">
@@ -103,7 +115,7 @@
 		<!-- End of Card -->
 
 		<!-- Details -->
-		<section class="details">
+		<section class="details" id="details">
 			<div class="container py-5 mt-5">
 				<div class="row">
 					<div class="col-sm-12 col-md">
@@ -132,7 +144,7 @@
 							inovatif dan siap menghadapi persaingan ekonomi mendatang di
 							bidang teknologi.
 						</p>
-						<a class="btn btn-light btn-rounded" href="#">Register</a>
+						<a class="btn btn-light btn-rounded" href="register.html">Register</a>
 					</div>
 				</div>
 			</div>
@@ -140,7 +152,7 @@
 		<!-- End of Details -->
 
 		<!-- Timeline -->
-		<section class="timeline_area my-5">
+		<section class="timeline_area my-5" id="timelines">
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-12 col-sm-8 col-lg-6">
@@ -449,7 +461,7 @@
 		<!-- End of Media Partner -->
 
 		<!-- Contacts -->
-		<section class="py-5 mt-5 contact container">
+		<section class="py-5 mt-5 contact container" id="contact">
 			<div class="row">
 				<div class="col-12 col-md-4 mb-5 mb-md-0 text-center">
 					<div class="contact_icon">
@@ -544,4 +556,6 @@
 	</body>
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15/dist/smooth-scroll.polyfills.min.js"></script>
+	<script src="assets/js/utility.js"></script>
 </html>
