@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700;800&display=swap');
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	font-family: 'Prompt', sans-serif;
 	margin: 0;
@@ -21,6 +25,9 @@ header h4 {
 	font-size: 40px;
 	margin-top: 150px;
 	margin-bottom: 30px;
+}
+#details, #timelines, #contact {
+	scroll-margin-top: 5em;
 }
 
 .top-shadow {
