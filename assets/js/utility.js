@@ -4,8 +4,8 @@ var scroll = new SmoothScroll('a[href*="#"]');
 $(window).scroll(function () {
 	var scroll = $(window).scrollTop();
 	if (scroll >= 10) {
-		$('.navbar').addClass('shadow-sm');
+		$('#navbarTop').addClass('shadow-sm');
 	} else {
-		$('.navbar').removeClass('shadow-sm');
+		$('#navbarTop').removeClass('shadow-sm');
 	}
 });

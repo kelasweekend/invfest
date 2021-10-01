@@ -63,6 +63,10 @@ header h4 {
 	color: #7e57c2 !important;
 }
 
+.active .fas{
+	color: #7e57c2 !important;
+}
+
 /* card */
 .card:hover {
 	background-color: rgb(245, 245, 245);
