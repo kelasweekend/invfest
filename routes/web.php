@@ -5,7 +5,10 @@ use App\Http\Controllers\Lomba\TimelineController;
 use App\Http\Controllers\Setting\MediapartnerController;
 use App\Http\Controllers\Setting\PembayaranController;
 use App\Http\Controllers\Setting\SponsorController;
+<<<<<<< HEAD
 use App\Mail\Pendaftaran;
+=======
+>>>>>>> 4433d8436dc7b12175caceaa8827d7f5c56f01bc
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
