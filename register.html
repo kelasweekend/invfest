@@ -1,185 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
-		<link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
-		<link
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-			rel="stylesheet"
-		/>
-		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="assets/css/style.css" />
-		<title>REGISTER</title>
-	</head>
-	<body class="bg-light">
-		<!-- Bottom Navbar -->
-		<nav
-			class="
-				navbar navbar-light navbar-expand
-				p-0
-				d-md-none d-lg-none d-xl-none
-				fixed-bottom
-				top-shadow
-			"
-			id="bottomNav"
-		>
-			<ul class="navbar-nav nav-justified w-100">
-				<li class="nav-item">
-					<a href="index.html" class="nav-link"
-						><i class="fas fa-home"></i>
-						<p>Home</p></a
-					>
-				</li>
-				<li class="nav-item">
-					<a href="tracking.html" class="nav-link"
-						><i class="fas fa-info"></i>
-						<p>Tracking</p></a
-					>
-				</li>
-				<li class="nav-item">
-					<a href="register.html" class="nav-link active"
-						><i class="fas fa-user"></i>
-						<p>Register</p></a
-					>
-				</li>
-			</ul>
-		</nav>
-		<!-- End of Bottom Navbar -->
-
-		<div class="row pb-5 pb-md-0 vh-100 register">
-			<div
-				class="col-5 h-100 d-none d-lg-block overflow-hidden"
-				style="background-color: #7e57c2"
-			>
-				<div class="h-100 d-flex justify-content-center">
-					<img
-						src="assets/img/pendaftaran.png"
-						class="details-img my-auto p-5 w-75"
-						alt="alternative"
-					/>
-				</div>
-			</div>
-
-			<div class="col-lg-7 col-md-12 overflow-auto pb-5">
-				<div class="px-3 px-md-5 h-100">
-					<a class="navbar-brand" href="index.html">
-						<img
-							src="assets/img/logo.png"
-							width="120"
-							class="d-inline-block align-top position-relative"
-							alt=""
-						/>
-					</a>
-					<hr class="mt-0" />
-					<h2>Pendaftaran Tim</h2>
-					<form class="mt-2">
-						<div class="form-row">
-							<div class="col-sm-12 col-md">
-								<div class="form-group">
-									<label for="inputNamaTim">Email</label>
-									<input
-										type="email"
-										class="form-control"
-										id="inputNamaTim"
-										placeholder="example@mail.com"
-									/>
-								</div>
-							</div>
-							<div class="col-sm-12 col-md">
-								<div class="form-group">
-									<label for="inputNamaTim">Asal Institusi</label>
-									<input
-										type="text"
-										class="form-control"
-										id="inputNamaTim"
-										placeholder="Masukan Nama Institusi"
-									/>
-								</div>
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="col-sm-12 col-md">
-								<div class="form-group">
-									<label for="inputNamaTim">Nama Tim</label>
-									<input
-										type="text"
-										class="form-control"
-										id="inputNamaTim"
-										placeholder="Masukan Nama Tim"
-									/>
-								</div>
-							</div>
-							<div class="col-sm-12 col-md">
-								<div class="form-group">
-									<label for="inputNamaKetua">Nama Ketua</label>
-									<input
-										type="text"
-										class="form-control"
-										id="inputNamaKetua"
-										placeholder="Masukan Nama Ketua"
-									/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-row">
-							<div class="col-sm-12 col-md">
-								<div class="form-group">
-									<label for="inputAnggotaSatu">Anggota Satu</label>
-									<input
-										type="text"
-										class="form-control"
-										id="inputAnggotaSatu"
-										placeholder="Masukan Nama Anggota"
-									/>
-								</div>
-							</div>
-							<div class="col-sm-12 col-md">
-								<div class="form-group">
-									<label for="inputAnggotaDua">Anggota Dua</label>
-									<input
-										type="text"
-										class="form-control"
-										id="inputAnggotaDua"
-										placeholder="Masukan Nama Anggota"
-									/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-row">
-							<div class="col-sm-12 col-md">
-								<div class="form-group">
-									<label for="inputTingkatan">Tingkatan</label>
-									<select id="inputTingkatan" class="form-control">
-										<option selected>Choose...</option>
-										<option>SMA/SMK</option>
-										<option>Universitas</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-sm-12 col-md">
-								<div class="form-group">
-									<label for="inputKategori">Kategori</label>
-									<select id="inputKategori" class="form-control">
-										<option selected>Choose...</option>
-										<option>Mobile Apps</option>
-										<option>UI/UX</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<button
-							type="submit"
-							class="btn primary-color btn-rounded btn-block"
-						>
-							Submit
-						</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/wizard.css" />
+    <title>REGISTER</title>
+  </head>
+  <body>
+    <div class="row pb-5 pb-md-0 vh-100">
+      <div
+        class="col-3 h-100 d-none d-md-none d-lg-block overflow-hidden"
+        style="background-color: #7e57c2"
+      >
+        <div class="h-100 d-flex justify-content-center">
+          <img
+            src="assets/img/pendaftaran.png"
+            class="details-img my-auto p-5 w-75"
+            alt="alternative"
+          />
+        </div>
+      </div>
+      <div class="col-lg-9 col-md-12 overflow-auto">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img
+              src="assets/img/logo.png"
+              width="120"
+              class="align-top position-relative"
+              alt=""
+            />
+          </a>
+          <hr class="mt-0" />
+          <div id="wizard" class="mt-auto">
+            <h3>
+              <div class="media">
+                <div class="bd-wizard-step-icon">
+                  <i class="mdi mdi-account-multiple-outline"></i>
+                </div>
+                <div class="media-body">
+                  <h6 class="bd-wizard-step-title">Application</h6>
+                  <p class="bd-wizard-step-subtitle">
+                    Lorem ipsum dolor sit amet.
+                  </p>
+                </div>
+              </div>
+            </h3>
+            <section>
+              <h5 class="section-heading">Configuring your application</h5>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="username">Username</label>
+                  <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="email">Admin Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="confirmPassword">Confirm Password</label>
+                  <input
+                    type="password"
+                    name="confirmPassword"
+                    id="confirmPassword"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </section>
+            <h3>
+              <div class="media">
+                <div class="bd-wizard-step-icon">
+                  <i class="mdi mdi-cart-outline"></i>
+                </div>
+                <div class="media-body">
+                  <h6 class="bd-wizard-step-title">Business</h6>
+                  <p class="bd-wizard-step-subtitle">
+                    Lorem ipsum dolor sit amet.
+                  </p>
+                </div>
+              </div>
+            </h3>
+            <section>
+              <h4 class="section-heading">Choose a business type</h4>
+              <div class="purpose-radios-wrapper">
+                <div class="purpose-radio">
+                  <input
+                    type="radio"
+                    name="purpose"
+                    id="branding"
+                    class="purpose-radio-input"
+                    value="Branding"
+                    checked
+                  />
+                  <label for="branding" class="purpose-radio-label">
+                    <span class="label-icon">
+                      <img
+                        src="assets/images/icon_branding.svg"
+                        alt="branding"
+                        class="label-icon-default"
+                      />
+                      <img
+                        src="assets/images/icon_branding_red.svg"
+                        alt="branding"
+                        class="label-icon-active"
+                      />
+                    </span>
+                    <span class="label-text">Branding</span>
+                  </label>
+                </div>
+                <div class="purpose-radio">
+                  <input
+                    type="radio"
+                    name="purpose"
+                    id="mobile-design"
+                    class="purpose-radio-input"
+                    value="Moile Design"
+                  />
+                  <label for="mobile-design" class="purpose-radio-label">
+                    <span class="label-icon">
+                      <img
+                        src="assets/images/icon_mobile_design.svg"
+                        alt="branding"
+                        class="label-icon-default"
+                      />
+                      <img
+                        src="assets/images/icon_mobile_design_red.svg"
+                        alt="branding"
+                        class="label-icon-active"
+                      />
+                    </span>
+                    <span class="label-text">Moile Design</span>
+                  </label>
+                </div>
+                <div class="purpose-radio">
+                  <input
+                    type="radio"
+                    name="purpose"
+                    id="web-design"
+                    class="purpose-radio-input"
+                    value="Web Design"
+                  />
+                  <label for="web-design" class="purpose-radio-label">
+                    <span class="label-icon">
+                      <img
+                        src="assets/images/icon_web_design.svg"
+                        alt="branding"
+                        class="label-icon-default"
+                      />
+                      <img
+                        src="assets/images/icon_web_design_red.svg"
+                        alt="branding"
+                        class="label-icon-active"
+                      />
+                    </span>
+                    <span class="label-text">Web Design</span>
+                  </label>
+                </div>
+              </div>
+            </section>
+            <h3>
+              <div class="media">
+                <div class="bd-wizard-step-icon">
+                  <i class="mdi mdi-credit-card-outline"></i>
+                </div>
+                <div class="media-body">
+                  <h6 class="bd-wizard-step-title">Review</h6>
+                  <p class="bd-wizard-step-subtitle">
+                    Lorem ipsum dolor sit amet.
+                  </p>
+                </div>
+              </div>
+            </h3>
+            <section>
+              <h4 class="section-heading">Verify details</h4>
+              <h6 class="font-weight-bold">User Details</h6>
+              <p class="mb-0">Username : <span id="enteredUsername"></span></p>
+              <p class="mb-0">Admin email : <span id="enteredEmail"></span></p>
+              <h6 class="font-weight-bold">
+                Business Type:
+                <span class="font-weight-normal" id="selectedBusiness"></span>
+              </h6>
+            </section>
+            <h3>
+              <div class="media">
+                <div class="bd-wizard-step-icon">
+                  <i class="mdi mdi-send-outline"></i>
+                </div>
+                <div class="media-body">
+                  <h6 class="bd-wizard-step-title">Completed</h6>
+                  <p class="bd-wizard-step-subtitle">
+                    Lorem ipsum dolor sit amet.
+                  </p>
+                </div>
+              </div>
+            </h3>
+            <section>
+              <h4 class="section-heading">Accept the terms and conditions</h4>
+              <div class="form-check mt-4">
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="termsAgreement"
+                    id="termsAgreement"
+                    value="termsAgreed"
+                    checked
+                  />
+                  I agree to the terms and conditions
+                </label>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.steps.min.js"></script>
+    <script src="assets/js/wizard.js"></script>
+  </body>
 </html>
