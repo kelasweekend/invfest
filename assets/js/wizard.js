@@ -18,20 +18,39 @@ $("#wizard").steps({
 
 //Form control
 
-$("#username").on("change", function (e) {
-  $("#enteredUsername").text(e.target.value);
+$("#email").on("change", function (e) {
+  $("#enteredEmail").text(e.target.value);
 });
 
-$("#phoneNumber").on("change", function (e) {
-  $("#enteredPhoneNumber").text(e.target.value);
+$("#asalInstitusi").on("change", function (e) {
+  $("#enteredasalInstitusi").text(e.target.value);
 });
 
-$("#cardNumber").on("change", function (e) {
-  let str = e.target.value;
-  let value = new Array(str.length - 4 + 1).join("x") + str.slice(-4);
-  $("#enteredCard").text(value);
+$("#namaTim").on("change", function (e) {
+  $("#enterednamaTim").text(e.target.value);
 });
 
-$("#expiration").on("change", function (e) {
-  $("#cardExpiration").text(e.target.value);
+$("#anggota1").on("change", function (e) {
+  $("#enteredanggota1").text(e.target.value);
 });
+
+$("#anggota2").on("change", function (e) {
+  $("#enteredanggota2").text(e.target.value);
+});
+
+$("#anggota3").on("change", function (e) {
+  $("#enteredanggota3").text(e.target.value);
+});
+
+$("#mobileApps").on("change", function (e) {
+  $("#enteredKategori").text(e.target.value);
+});
+
+$("#webApps").on("change", function (e) {
+  $("#enteredKategori").text(e.target.value);
+});
+
+$("#ui/ux").on("change", function (e) {
+  $("#enteredKategori").text(e.target.value);
+});
+

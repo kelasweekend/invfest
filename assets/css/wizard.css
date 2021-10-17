@@ -99,7 +99,6 @@
 }
 
 .wizard .content .form-control {
-  padding: 16px 29px;
   min-height: 50px;
   border-radius: 4px;
   border: solid 1px #7e57c2;
@@ -323,3 +322,6 @@
   min-height: 340px;
 }
 
+.fas {
+  font-size: 32px;
+}

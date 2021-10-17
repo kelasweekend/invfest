@@ -80,205 +80,226 @@
             <img src="assets/img/logo.png" width="120" alt="" />
           </a>
           <div id="wizard">
+			  <!-- Data Tim -->
             <h3>
               <div class="media">
                 <div class="bd-wizard-step-icon">
                   <i class="mdi mdi-account-multiple-outline"></i>
                 </div>
                 <div class="media-body">
-                  <h6 class="bd-wizard-step-title">Application</h6>
-                  <p class="bd-wizard-step-subtitle">
-                    Lorem ipsum dolor sit amet.
-                  </p>
+                  <h6 class="bd-wizard-step-title">Team</h6>
+                  <p class="bd-wizard-step-subtitle">Nama Tim dan Anggota.</p>
                 </div>
               </div>
             </h3>
             <section>
-              <h5 class="section-heading">Configuring your application</h5>
+              <h5 class="section-heading">Pendaftaran Tim</h5>
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="username">Username</label>
-                  <input
-                    type="text"
-                    name="username"
-                    id="username"
-                    class="form-control"
-                    required
-                  />
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="email">Admin Email</label>
+                  <label for="username">Email</label>
                   <input
                     type="email"
                     name="email"
                     id="email"
                     class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="asalInstitusi">Asal Institusi</label>
+                  <input
+                    type="text"
+                    name="asalInstitusi"
+                    id="asalInstitusi"
+                    class="form-control"
+                    required
                   />
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="password">Password</label>
+                  <label for="namaTim">Nama Tim</label>
                   <input
-                    type="password"
-                    name="password"
-                    id="password"
+                    type="text"
+                    name="namaTim"
+                    id="namaTim"
                     class="form-control"
                   />
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="confirmPassword">Confirm Password</label>
+                  <label for="anggota1">Anggota 1</label>
                   <input
-                    type="password"
-                    name="confirmPassword"
-                    id="confirmPassword"
+                    type="text"
+                    name="anggota1"
+                    id="anggota1"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="anggota2">Anggota 2</label>
+                  <input
+                    type="text"
+                    name="anggota2"
+                    id="anggota2"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="anggota3">Anggota 3</label>
+                  <input
+                    type="text"
+                    name="anggota3"
+                    id="anggota3"
                     class="form-control"
                   />
                 </div>
               </div>
             </section>
+			<!-- End of Data Tim -->
+
+			<!-- Kategori -->
             <h3>
               <div class="media">
                 <div class="bd-wizard-step-icon">
                   <i class="mdi mdi-cart-outline"></i>
                 </div>
                 <div class="media-body">
-                  <h6 class="bd-wizard-step-title">Business</h6>
-                  <p class="bd-wizard-step-subtitle">
-                    Lorem ipsum dolor sit amet.
-                  </p>
+                  <h6 class="bd-wizard-step-title">Kategori</h6>
+                  <p class="bd-wizard-step-subtitle">Kategori Lomba Pilihan</p>
                 </div>
               </div>
             </h3>
             <section>
-              <h4 class="section-heading">Choose a business type</h4>
+              <h4 class="section-heading">Pilih Kategori</h4>
               <div class="purpose-radios-wrapper">
                 <div class="purpose-radio">
                   <input
                     type="radio"
                     name="purpose"
-                    id="branding"
+                    id="mobileApps"
                     class="purpose-radio-input"
-                    value="Branding"
-                    checked
+                    value="Mobile Apps"
                   />
-                  <label for="branding" class="purpose-radio-label">
+                  <label for="mobileApps" class="purpose-radio-label">
                     <span class="label-icon">
-                      <img
-                        src="assets/images/icon_branding.svg"
-                        alt="branding"
-                        class="label-icon-default"
-                      />
-                      <img
-                        src="assets/images/icon_branding_red.svg"
-                        alt="branding"
-                        class="label-icon-active"
-                      />
+                      <span class="label-icon-default fas fa-mobile-alt">
+                      </span>
+                      <span class="label-icon-active fas fa-mobile-alt"></span>
                     </span>
-                    <span class="label-text">Branding</span>
+                    <span class="label-text">Mobile Apps</span>
                   </label>
                 </div>
                 <div class="purpose-radio">
                   <input
                     type="radio"
                     name="purpose"
-                    id="mobile-design"
+                    id="webApps"
                     class="purpose-radio-input"
-                    value="Moile Design"
+                    value="Web Apps"
                   />
-                  <label for="mobile-design" class="purpose-radio-label">
+                  <label for="webApps" class="purpose-radio-label">
                     <span class="label-icon">
-                      <img
-                        src="assets/images/icon_mobile_design.svg"
-                        alt="branding"
-                        class="label-icon-default"
-                      />
-                      <img
-                        src="assets/images/icon_mobile_design_red.svg"
-                        alt="branding"
-                        class="label-icon-active"
-                      />
+                      <span class="label-icon-default fas fa-laptop-code">
+                      </span>
+                      <span class="label-icon-active fas fa-laptop-code"></span>
                     </span>
-                    <span class="label-text">Moile Design</span>
+                    <span class="label-text">Web Apps</span>
                   </label>
                 </div>
                 <div class="purpose-radio">
                   <input
                     type="radio"
                     name="purpose"
-                    id="web-design"
+                    id="ui/ux"
                     class="purpose-radio-input"
-                    value="Web Design"
+                    value="UI/UX"
                   />
-                  <label for="web-design" class="purpose-radio-label">
+                  <label for="ui/ux" class="purpose-radio-label">
                     <span class="label-icon">
-                      <img
-                        src="assets/images/icon_web_design.svg"
-                        alt="branding"
-                        class="label-icon-default"
-                      />
-                      <img
-                        src="assets/images/icon_web_design_red.svg"
-                        alt="branding"
-                        class="label-icon-active"
-                      />
+                      <span class="label-icon-default fas fa-palette"> </span>
+                      <span class="label-icon-active fas fa-palette"></span>
                     </span>
-                    <span class="label-text">Web Design</span>
+                    <span class="label-text">UI/UX</span>
                   </label>
                 </div>
               </div>
             </section>
+			<!-- End of Kategori -->
+
+			<!-- Tingkatan -->
+            <h3>
+              <div class="media">
+                <div class="bd-wizard-step-icon">
+                  <i class="mdi mdi-cart-outline"></i>
+                </div>
+                <div class="media-body">
+                  <h6 class="bd-wizard-step-title">Tingkatan</h6>
+                  <p class="bd-wizard-step-subtitle">Tingkatan Lomba Pilihan</p>
+                </div>
+              </div>
+            </h3>
+            <section>
+				<h4 class="section-heading">Pilih Tingkatan</h4>
+				<div class="purpose-radios-wrapper">
+				  <div class="purpose-radio">
+					<input
+					  type="radio"
+					  name="purpose"
+					  id="sma/smk"
+					  class="purpose-radio-input"
+					  value="SMA/SMK"
+					/>
+					<label for="sma/smk" class="purpose-radio-label">
+					  <span class="label-icon">
+						<span class="label-icon-default fas fa-school">
+						</span>
+						<span class="label-icon-active fas fa-school"></span>
+					  </span>
+					  <span class="label-text">SMA/SMK</span>
+					</label>
+				  </div>
+				  <div class="purpose-radio">
+					<input
+					  type="radio"
+					  name="purpose"
+					  id="universitas"
+					  class="purpose-radio-input"
+					  value="Universitas"
+					/>
+					<label for="universitas" class="purpose-radio-label">
+					  <span class="label-icon">
+						<span class="label-icon-default fas fa-graduation-cap">
+						</span>
+						<span class="label-icon-active fas fa-graduation-cap"></span>
+					  </span>
+					  <span class="label-text">Universitas</span>
+					</label>
+				  </div>
+			  </section>
+			<!-- End of Tingkatan -->
+
             <h3>
               <div class="media">
                 <div class="bd-wizard-step-icon">
                   <i class="mdi mdi-credit-card-outline"></i>
                 </div>
                 <div class="media-body">
-                  <h6 class="bd-wizard-step-title">Review</h6>
+                  <h6 class="bd-wizard-step-title">Konfirmasi Data</h6>
                   <p class="bd-wizard-step-subtitle">
-                    Lorem ipsum dolor sit amet.
+                    Konfirmasi data tim.
                   </p>
                 </div>
               </div>
             </h3>
             <section>
-              <h4 class="section-heading">Verify details</h4>
-              <h6 class="font-weight-bold">User Details</h6>
-              <p class="mb-0">Username : <span id="enteredUsername"></span></p>
-              <p class="mb-0">Admin email : <span id="enteredEmail"></span></p>
-              <h6 class="font-weight-bold">
-                Business Type:
-                <span class="font-weight-normal" id="selectedBusiness"></span>
-              </h6>
-            </section>
-            <h3>
-              <div class="media">
-                <div class="bd-wizard-step-icon">
-                  <i class="mdi mdi-send-outline"></i>
-                </div>
-                <div class="media-body">
-                  <h6 class="bd-wizard-step-title">Completed</h6>
-                  <p class="bd-wizard-step-subtitle">
-                    Lorem ipsum dolor sit amet.
-                  </p>
-                </div>
-              </div>
-            </h3>
-            <section>
-              <h4 class="section-heading">Accept the terms and conditions</h4>
-              <div class="form-check mt-4">
-                <label class="form-check-label">
-                  <input
-                    type="checkbox"
-                    class="form-check-input"
-                    name="termsAgreement"
-                    id="termsAgreement"
-                    value="termsAgreed"
-                    checked
-                  />
-                  I agree to the terms and conditions
-                </label>
-              </div>
+              <h4 class="section-heading">Konfirmasi Data</h4>
+              <p class="mb-0">Email : <span id="enteredEmail"></span></p>
+              <p class="mb-0">Asal Institusi : <span id="enteredasalInstitusi"></span></p>
+              <p class="mb-0">Nama Tim : <span id="enterednamaTim"></span></p>
+              <p class="mb-0">Anggota 1 : <span id="enteredanggota1"></span></p>
+              <p class="mb-0">Anggota 2 : <span id="enteredanggota2"></span></p>
+              <p class="mb-0">Anggota 3 : <span id="enteredanggota3"></span></p>
+              <p class="mb-0">Kategori : <span id="enteredKategori"></span></p>
             </section>
           </div>
         </div>
