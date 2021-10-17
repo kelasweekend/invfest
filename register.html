@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
     <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
       rel="stylesheet"
       href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css"
     />
@@ -15,11 +19,50 @@
     <title>REGISTER</title>
   </head>
   <body>
+    <!-- Bottom Navbar -->
+    <nav
+      class="
+        navbar navbar-light navbar-expand
+        p-0
+        d-md-none d-lg-none d-xl-none
+        fixed-bottom
+        top-shadow
+      "
+      id="bottomNav"
+    >
+      <ul class="navbar-nav nav-justified w-100">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link"
+            ><i class="fas fa-home"></i>
+            <p>Home</p></a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="tracking.html" class="nav-link active"
+            ><i class="fas fa-info"></i>
+            <p>Tracking</p></a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="register.html" class="nav-link"
+            ><i class="fas fa-user"></i>
+            <p>Register</p></a
+          >
+        </li>
+      </ul>
+    </nav>
+    <!-- End of Bottom Navbar -->
+
     <div class="row pb-5 pb-md-0 vh-100">
       <div
-        class="col-3 h-100 d-none d-md-none d-lg-block overflow-hidden"
+        class="col-3 h-100 d-none d-lg-block overflow-hidden"
         style="background-color: #7e57c2"
       >
+        <div class="container pl-5">
+          <a class="navbar-brand" href="index.html">
+            <img src="assets/img/logo.png" width="120" alt="" />
+          </a>
+        </div>
         <div class="h-100 d-flex justify-content-center">
           <img
             src="assets/img/pendaftaran.png"
@@ -28,18 +71,15 @@
           />
         </div>
       </div>
-      <div class="col-lg-9 col-md-12 overflow-auto">
-        <div class="container">
-          <a class="navbar-brand" href="index.html">
-            <img
-              src="assets/img/logo.png"
-              width="120"
-              class="align-top position-relative"
-              alt=""
-            />
+      <div class="col-lg-9 col-md-12 overflow-auto my-auto">
+        <div class="container pb-5">
+          <a
+            class="navbar-brand pl-3 pl-sm-0 d-md-block d-lg-none"
+            href="index.html"
+          >
+            <img src="assets/img/logo.png" width="120" alt="" />
           </a>
-          <hr class="mt-0" />
-          <div id="wizard" class="mt-auto">
+          <div id="wizard">
             <h3>
               <div class="media">
                 <div class="bd-wizard-step-icon">
