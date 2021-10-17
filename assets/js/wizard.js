@@ -53,4 +53,3 @@ $("#webApps").on("change", function (e) {
 $("#ui/ux").on("change", function (e) {
   $("#enteredKategori").text(e.target.value);
 });
-
