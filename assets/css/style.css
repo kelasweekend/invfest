@@ -38,7 +38,9 @@ header h4 {
 .top-shadow {
 	box-shadow: 0px .125rem .25rem rgba(0,0,0,.075), 0px .125rem .25rem #888;
 }
-
+.form-control {
+	border: solid 1px #7e57c2 !important;
+  }
 /* button */
 .btn-rounded {
 	border-radius: 20px;
@@ -109,6 +111,10 @@ header h4 {
 }
 
 /* sponsor */
+#sponsor h4 {
+	margin-top: 20px;
+
+}
 .sponsor-item {
 	margin: 20px 10px 10px 20px;
 	padding: 29px 10px;
