@@ -23,8 +23,8 @@ class PendaftaranController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="'. route('pendaftaran.edit', $row->invoice).'" data-toggle="tooltip" data-original-title="Edit" class="edit btn btn-primary btn-sm editItem"><i class="fas fa-edit"></i></a>';
-                    $actionBtn = $actionBtn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-url="' . route('kategori.destroy', $row->id) . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteItem"><i class="fas fa-trash"></i></a>';
+                    $actionBtn = '<a href="' . route('pendaftaran.edit', $row->invoice) . '" data-toggle="tooltip" data-original-title="Edit" class="edit btn btn-primary btn-sm editItem"><i class="fas fa-edit"></i></a>';
+                    $actionBtn = $actionBtn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-url="' . route('pendaftaran.destroy', $row->id) . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteItem"><i class="fas fa-trash"></i></a>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
@@ -47,7 +47,7 @@ class PendaftaranController extends Controller
             'berkas_anggota_2' => 'image|mimes:jpeg,png,jpg|max:2048',
             'berkas_anggota_3' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
-        
+
         $this->daftar->buat($request);
         // $invoice = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         // dd(substr(str_shuffle($invoice), 0, 8));
@@ -64,6 +64,41 @@ class PendaftaranController extends Controller
             # jika data ada maka
             return view('admin.pendaftaran.edit', compact('data'));
         }
-        
+    }
+
+    public function update(Request $request, $invoice)
+    {
+        $data = $this->daftar->edit($invoice);
+        if (empty($data)) {
+            # jika data kosong maka
+            return back();
+        } else {
+            # jika data ada maka
+            if ($request->status) {
+                # code...
+                $data->update([
+                    'status' => "1"
+                ]);
+            } else {
+                # code...
+                $data->update([
+                    'status' => "0"
+                ]);
+            }
+
+            return back();
+        }
+    }
+
+    public function destroy($invoice)
+    {
+        $data = Pendaftaran::where('invoice', $invoice)->first();
+        if (empty($data)) {
+            # jika data kosong maka
+            return response()->json(['error' => 'Data Tidak tersedia']);
+        } else {
+            # jika data ada maka
+            return response()->json(['success' => 'Data deleted successfully']);
+        }
     }
 }

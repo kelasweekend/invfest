@@ -2,8 +2,10 @@
 
 namespace App\Models\Lomba;
 
+use App\Mail\Pendaftaran as MailPendaftaran;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 
 class Pendaftaran extends Model
 {
@@ -19,7 +21,7 @@ class Pendaftaran extends Model
         'nama_pendamping',
         'berkas_pendamping',
         'status',
-        'bukti_pendaftaran',
+        'bukti_pembayaran',
         // anggota
         'anggota_1', 'berkas_anggota_1',
         'anggota_2', 'berkas_anggota_2',
@@ -41,7 +43,7 @@ class Pendaftaran extends Model
                 $pendamping = time() . '.' . $request->berkas_pendamping->extension();
                 $anggota_2 = time() . '.' . $request->berkas_anggota_2->extension();
                 $anggota_1 = time() . '.' . $request->berkas_anggota_1->extension();
-                $this->create([
+                $simpan = $this->create([
                     'kategori_id' => $request->kategori_id,
                     'invoice' => substr(str_shuffle($invoice), 0, 8),
                     'nama_team' => $request->nama_team,
@@ -72,7 +74,7 @@ class Pendaftaran extends Model
                 $anggota_3 = time() . '.' . $request->berkas_anggota_3->extension();
                 $anggota_2 = time() . '.' . $request->berkas_anggota_2->extension();
                 $anggota_1 = time() . '.' . $request->berkas_anggota_1->extension();
-                $this->create([
+                $simpan = $this->create([
                     'kategori_id' => $request->kategori_id,
                     'invoice' => substr(str_shuffle($invoice), 0, 8),
                     'nama_team' => $request->nama_team,
@@ -102,7 +104,7 @@ class Pendaftaran extends Model
                 // anggota 1
                 $pendamping = time() . '.' . $request->berkas_pendamping->extension();
                 $anggota_1 = time() . '.' . $request->berkas_anggota_1->extension();
-                $this->create([
+                $simpan = $this->create([
                     'kategori_id' => $request->kategori_id,
                     'invoice' => substr(str_shuffle($invoice), 0, 8),
                     'nama_team' => $request->nama_team,
@@ -128,7 +130,7 @@ class Pendaftaran extends Model
             ]);
             $anggota_2 = time() . '.' . $request->berkas_anggota_2->extension();
             $anggota_1 = time() . '.' . $request->berkas_anggota_1->extension();
-            $this->create([
+            $simpan = $this->create([
                 'kategori_id' => $request->kategori_id,
                 'invoice' => substr(str_shuffle($invoice), 0, 8),
                 'nama_team' => $request->nama_team,
@@ -154,7 +156,7 @@ class Pendaftaran extends Model
             $anggota_3 = time() . '.' . $request->berkas_anggota_3->extension();
             $anggota_2 = time() . '.' . $request->berkas_anggota_2->extension();
             $anggota_1 = time() . '.' . $request->berkas_anggota_1->extension();
-            $this->create([
+            $simpan = $this->create([
                 'kategori_id' => $request->kategori_id,
                 'invoice' => substr(str_shuffle($invoice), 0, 8),
                 'nama_team' => $request->nama_team,
@@ -179,7 +181,7 @@ class Pendaftaran extends Model
                 'anggota_1' => 'required',
             ]);
             $anggota_1 = time() . '.' . $request->berkas_anggota_1->extension();
-            $this->create([
+            $simpan = $this->create([
                 'kategori_id' => $request->kategori_id,
                 'invoice' => substr(str_shuffle($invoice), 0, 8),
                 'nama_team' => $request->nama_team,
@@ -193,6 +195,14 @@ class Pendaftaran extends Model
             ]);
             $request->berkas_anggota_1->move(public_path('assets/anggota'), $anggota_1);
         }
+
+        $details = [
+            'token' => $simpan->invoice,
+            'email' => $request->email,
+            'nama_team' => $request->nama_team,
+            'nama_ketua' => $request->nama_ketua
+        ];
+        Mail::to($request->email)->send(new MailPendaftaran($details));
 
         return;
     }

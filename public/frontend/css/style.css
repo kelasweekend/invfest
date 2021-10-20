@@ -180,11 +180,17 @@ header h4 {
 	background-color: #e7e7e7;
 }
 
+.title-page {
+	margin-top: 150px;
+}
+
 @media (max-width: 767.98px) {
 	header h4 {
 		margin-top: 50px;
 	}
-
+	.title-page {
+		margin-top: 0px;
+	}
 	header .btn {
 		width: 100%;
 		margin-bottom: 10px;

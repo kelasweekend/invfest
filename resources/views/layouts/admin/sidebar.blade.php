@@ -55,6 +55,12 @@
                         <p>Timeline Lomba</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('karya.index')}}" class="nav-link {{ Request::segment(2) === 'karya' ? 'active' : null }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Karya Peserta</p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

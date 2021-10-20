@@ -23,7 +23,7 @@ class KategoriController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" data-url="' . route('kategori.edit', $row->id) . '" class="edit btn btn-primary btn-sm editItem"><i class="fas fa-edit"></i></a>';
+                    $actionBtn = '<a href="' . asset('assets/rulebook/'. $row->rulebook) . '" data-toggle="tooltip" class="edit btn btn-primary btn-sm"><i class="fas fa-file-download"></i> Rulebook</a>';
                     $actionBtn = $actionBtn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-url="' . route('kategori.destroy', $row->id) . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteItem"><i class="fas fa-trash"></i></a>';
                     return $actionBtn;
                 })
@@ -43,23 +43,25 @@ class KategoriController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama_kategori' => 'required',
-            'body' => 'required',
-            'deskripsi' => 'required|string|max:100'
+            'deskripsi' =>  'required|string|max:100',
+            'rulebook' => 'mimes:pdf|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,svg|max:1048'
         ]);
 
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()->all()]);
         }
 
-        Kategori::updateOrCreate(
-            ['id' => $request->Item_id],
-            [
-                'nama_kategori' => $request->nama_kategori,
-                'slug_kategori' => str_replace(' ', '-', $request->nama_kategori),
-                'deskripsi' => $request->deskripsi,
-                'body' => $request->body
-            ]
-        );
+        $thumbnail = time() . '.' . $request->image->extension();
+        $aturan = time() . '.' . $request->rulebook->extension();
+        Kategori::Create([
+            'nama_kategori' => $request->nama_kategori,
+            'deskripsi' => $request->deskripsi,
+            'image' => $thumbnail,
+            'rulebook' => $aturan
+        ]);
+        $request->image->move(public_path('frontend/lomba'), $thumbnail);
+        $request->rulebook->move(public_path('assets/rulebook'), $aturan);
 
         return response()->json(['success' => 'Kategori Berhasil ditambahkan']);
     }
@@ -83,8 +85,12 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        Kategori::find($id)->delete();
-
+        $data = Kategori::find($id);
+        $rulebook = public_path('assets/rulebook/'. $data->rulebook);
+        $images = public_path('frontend/lomba/'. $data->image);
+        unlink($rulebook); 
+        unlink($images);   
+        $data->delete();
         return response()->json(['success' => 'Kategori deleted successfully']);
     }
 }

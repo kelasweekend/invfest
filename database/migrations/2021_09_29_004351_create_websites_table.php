@@ -16,7 +16,14 @@ class CreateWebsitesTable extends Migration
         Schema::create('websites', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('heading');
             $table->string('deskripsi');
+            $table->string('nomor');
+            $table->string('email');
+            $table->enum('maintenance', ['0', '1']);
+            $table->date('pengumpulan');
+            $table->string('logo_atas');
+            $table->string('logo_bawah');
             $table->timestamps();
         });
     }

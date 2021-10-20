@@ -40,7 +40,6 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama kategori</th>
-                                            <th>Slug Kategori</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -51,7 +50,6 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama kategori</th>
-                                            <th>Slug Kategori</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
@@ -79,20 +77,30 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="ItemForm" name="ItemForm" class="form-horizontal">
-                        <input type="hidden" name="Item_id" id="Item_id">
+                    <form method="POST" enctype="multipart/form-data" id="laravel-ajax-file-upload"
+                    action="javascript:void(0)">
                         <div class="mb-2">
                             <label for="nama_kategori" class="form-label">Title </label>
                             <input type="text" name="nama_kategori" class="form-control" id="nama_kategori"
                                 placeholder="E.g IF 07 K" autocomplete="off" required>
                         </div>
                         <div class="mb-2">
-                            <label for="body">Deskripsi singkat</label>
-                            <textarea class="form-control" name="deskripsi" id="description"></textarea>
+                            <label for="pelajaran" class="form-label">Upload Image</label>
+                            <div class="custom-file">
+                                <input type="file" name="image" class="custom-file-input" id="file" required>
+                                <label class="custom-file-label" for="file">Pilih Image</label>
+                            </div>
                         </div>
                         <div class="mb-2">
-                            <label for="body">Isi Kategori</label>
-                            <textarea class="form-control summernote" name="body" id="body"></textarea>
+                            <label for="body">Deskripsi singkat</label>
+                            <textarea class="form-control" name="deskripsi" id="description" required></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label for="pelajaran" class="form-label">Upload Rulebook</label>
+                            <div class="custom-file">
+                                <input type="file" name="rulebook" class="custom-file-input" id="file" required>
+                                <label class="custom-file-label" for="file">Pilih rulebook</label>
+                            </div>
                         </div>
                         <button class="btn btn-secondary tombol float-right" id="saveBtn" value="create"></button>
                     </form>
@@ -104,7 +112,6 @@
 
 
 @section('css-tambahan')
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
@@ -119,9 +126,6 @@
     <script src="{{ asset('backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <!-- Page specific script -->
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('.summernote').summernote();
-        });
         $(function() {
             $.ajaxSetup({
                 headers: {
@@ -146,10 +150,6 @@
                         name: 'nama_kategori'
                     },
                     {
-                        data: 'slug_kategori',
-                        name: 'slug_kategori'
-                    },
-                    {
                         data: 'action',
                         name: 'action',
                         orderable: true,
@@ -166,55 +166,70 @@
                 $('#ajaxModel').modal('show');
             });
 
-            $('body').on('click', '.editItem', function() {
-                var Item_id = $(this).data('id');
-                var url = $(this).data('url');
-                $('.tombol').html("Save Change");
-                $.get(url, function(data) {
-                    $('#modelHeading').html("Edit Kategori");
-                    $('#saveBtn').val("edit-user");
-                    $('#ajaxModel').modal('show');
-                    $('#Item_id').val(data.id);
-                    $('input[name=nama_kategori]').val(data.nama_kategori);
-                    $("textarea#description").text(data.deskripsi);
-                    $(".summernote").summernote("code", data.body);
-                })
-            });
-
-            $('#saveBtn').click(function(e) {
+            $('#laravel-ajax-file-upload').submit(function(e) {
                 e.preventDefault();
+                var formData = new FormData(this);
                 $.ajax({
-                    data: $('#ItemForm').serialize(),
+                    type: 'POST',
                     url: "{{ route('kategori.store') }}",
-                    type: "POST",
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.success) {
-                            Swal.fire({
-                                icon: "success",
-                                title: "Selamat",
-                                text: response.success
-                            });
-                            $('#ItemForm').trigger("reset");
-                            $('#ajaxModel').modal('hide');
-                            table.draw();
-                        } else {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Mohon Maaf !",
-                                text: response.error
-                            });
-                        }
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        this.reset();
+                        Swal.fire({
+                            icon: "success",
+                            title: "Selamat",
+                            text: data.success
+                        });
+                        $('#ajaxModel').modal('hide');
+                        table.draw();
                     },
-                    error: function() {
+                    error: function(data) {
                         Swal.fire({
                             icon: "error",
-                            title: "Oops...",
-                            text: "Something went wrong!"
+                            title: "Peringatan !",
+                            text: data.error
                         });
                     }
                 });
             });
+
+            // $('#saveBtn').click(function(e) {
+            //     e.preventDefault();
+            //     $.ajax({
+            //         data: $('#ItemForm').serialize(),
+            //         url: "{{ route('kategori.store') }}",
+            //         type: "POST",
+            //         dataType: 'json',
+            //         success: function(response) {
+            //             if (response.success) {
+            //                 Swal.fire({
+            //                     icon: "success",
+            //                     title: "Selamat",
+            //                     text: response.success
+            //                 });
+            //                 $('#ItemForm').trigger("reset");
+            //                 $('#ajaxModel').modal('hide');
+            //                 table.draw();
+            //             } else {
+            //                 Swal.fire({
+            //                     icon: "error",
+            //                     title: "Mohon Maaf !",
+            //                     text: response.error
+            //                 });
+            //             }
+            //         },
+            //         error: function() {
+            //             Swal.fire({
+            //                 icon: "error",
+            //                 title: "Oops...",
+            //                 text: "Something went wrong!"
+            //             });
+            //         }
+            //     });
+            // });
             $('body').on('click', '.deleteItem', function() {
 
                 var Item_id = $(this).data("id");

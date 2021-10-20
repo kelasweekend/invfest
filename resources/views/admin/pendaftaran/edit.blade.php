@@ -43,10 +43,21 @@
                                 <div class="d-flex justify-content-between">
                                     INVOICE NUMBER : {{ $data->invoice }}
                                     @if ($data->status == '0')
-                                        <input type="checkbox" name="my-checkbox" data-bootstrap-switch>
+                                        <form id="form" action="{{ route('pendaftaran.update', $data->invoice) }}"
+                                            method="POST">
+                                            @csrf
+                                            <label for="checkbox">ACC Peserta ? </label>
+                                            <input type="checkbox" name="status" id="checkbox">
+                                        </form>
                                     @else
-                                        <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch>
+                                        <form id="form" action="{{ route('pendaftaran.update', $data->invoice) }}"
+                                            method="POST">
+                                            @csrf
+                                            <label for="checkbox">Non ACC Peserta ? </label>
+                                            <input type="checkbox" name="matikan" id="checkbox">
+                                        </form>
                                     @endif
+
                                 </div>
                             </div>
                             <!-- /.card-header -->
@@ -93,7 +104,8 @@
                                                         placeholder="Tidak Ada Pendamping">
                                                 </div>
                                                 <div class="col-2">
-                                                    <button class="btn btn-secondary">Unduh Berkas</button>
+                                                    <a @if ($data->bukti_pembayaran != "")href="{{ asset('assets/pendamping/' . $data->berkas_pendamping) }}"@endif
+                                                        target="__blank" class="btn btn-secondary">Unduh Berkas</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,7 +121,8 @@
                                                         placeholder="Nama Team">
                                                 </div>
                                                 <div class="col-2">
-                                                    <button class="btn btn-secondary">Unduh Berkas</button>
+                                                    <a @if ($data->bukti_pembayaran != "")href="{{ asset('assets/anggota/' . $data->berkas_anggota_1) }}"@endif
+                                                        target="__blank" class="btn btn-secondary">Unduh Berkas</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -119,32 +132,24 @@
                                         <div class="col-sm-10">
                                             <div class="row">
                                                 <div class="col-10">
-                                                    <input type="email" class="form-control" disabled readonly
+                                                    <input type="text" class="form-control" disabled readonly
                                                         value="{{ $data->anggota_2 }}" id="nama_team"
                                                         placeholder="Tidak Ada Anggota">
                                                 </div>
                                                 <div class="col-2">
-                                                    <button class="btn btn-secondary">Unduh Berkas</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="anggota_3" class="col-sm-2 col-form-label">Nama Anggota 3</label>
-                                        <div class="col-sm-10">
-                                            <div class="row">
-                                                <div class="col-10">
-                                                    <input type="email" class="form-control" disabled readonly
-                                                        value="{{ $data->anggota_3 }}" id="nama_team"
-                                                        placeholder="Tidak Ada Anggota">
-                                                </div>
-                                                <div class="col-2">
-                                                    <button class="btn btn-secondary">Unduh Berkas</button>
+                                                    <a @if ($data->bukti_pembayaran != "")href="{{ asset('assets/anggota/' . $data->berkas_anggota_2) }}"@endif 
+                                                        target="__blank" class="btn btn-secondary">Unduh Berkas</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <hr>
+                                    <div class="form-group row">
+                                        <label for="anggota_3" class="col-sm-2 col-form-label">Bukti Pembayaran</label>
+                                        <div class="col-sm-10">
+                                            <a @if ($data->bukti_pembayaran != "")href="{{ asset('assets/bukti_pembayaran/' . $data->bukti_pembayaran) }}"@endif target="__blank" class="btn btn-secondary">Unduh Berkas</a>
+                                        </div>
+                                    </div>
                                     <div class="form-group row">
                                         <div class="col-6">
                                             <label for="status" class="col-md-6 col-form-label">Status Pendaftaran</label>
@@ -155,11 +160,11 @@
                                             @endif
                                         </div>
                                         <div class="col-6">
-                                            <label for="status" class="col-md-6 col-form-label">Status Pendaftaran</label>
+                                            <label for="status" class="col-md-6 col-form-label">Status Pembayaran</label>
                                             @if ($data->bukti_pembayaran == null)
                                                 <span class="badge badge-danger">Belum Pembayaran</span>
                                             @else
-                                                <span class="badge badge-success">Disetujui</span>
+                                                <span class="badge badge-success">Sudah Upload Bukti</span>
                                             @endif
                                         </div>
                                     </div>
@@ -185,5 +190,24 @@
         $("input[data-bootstrap-switch]").each(function() {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         })
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            $('#checkbox').on('change', function() {
+                Swal.fire({
+                    title: 'Apakah Kamu Yakin ?',
+                    text: "Status Team Akan Berubah dibagian bawah",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Setujui'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#form').submit();
+                    }
+                })
+            });
+        });
     </script>
 @endsection
