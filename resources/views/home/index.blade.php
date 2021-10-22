@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @section('title')
-    Selamat Datang di {{$web->title}}
+    Selamat Datang di {{ $web->title }}
 @endsection
 
 @section('content')
@@ -13,15 +13,40 @@
                 </div>
                 <div class="col-sm-12 col-md-6 order-md-last">
                     <h4 class="font-weight-bolder">
-                        {{$web->heading}}
+                        {{ $web->heading }}
                     </h4>
                     <a href="#details" class="btn primary-color btn-rounded"><i class="fas fa-arrow-down mr-1"></i> Detail</a>
-                    <a href="{{route('karya')}}" class="btn btn-secondary btn-rounded"><i class="fas fa-file-upload mr-1"></i> Upload Karya</a>
+                    <a href="{{ route('karya') }}" class="btn btn-secondary btn-rounded"><i
+                            class="fas fa-file-upload mr-1"></i> Upload Karya</a>
                 </div>
             </div>
         </div>
     </header>
     <!-- End of Header -->
+
+    <!-- sponsor -->
+    <section id="sponsor">
+        <div class="container py-5">
+            <h4 class="text-center my-5 font-weight-bold">Sponsor Event</h4>
+            <div class="row">
+                @foreach ($sponsor as $duit)
+                <div class="col-4 col-md-2 bg-white sponsor-item">
+                    <img src="{{asset('assets/sponsor/' . $duit->image_sponsor)}}" alt="logo"
+                        class="img-fluid mx-auto d-block rounded" />
+                </div>    
+                @endforeach
+            </div>
+            <div class="row">
+                {{-- <div class="col-sm-12 col-md-3 section_heading">
+                    <h4>Sponsored By :</h4>
+                </div> --}}
+                <div class="col-sm-12 col-md-9">
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- sponsor end -->
 
     <!-- Card -->
     <section id="kompetisi">
@@ -30,7 +55,8 @@
             <div class="card-deck">
                 @foreach ($kategori as $lomba)
                     <div class="card shadow-sm">
-                        <img src="{{asset('frontend/lomba/'. $lomba->image)}}" class="img-fluid mx-auto d-block py-5" alt="Mobile" />
+                        <img src="{{ asset('frontend/lomba/' . $lomba->image) }}" class="img-fluid mx-auto d-block py-5"
+                            alt="Mobile" />
                         <div class="card-body">
                             <h5 class="card-title">{{ $lomba->nama_kategori }}</h5>
                             <p class="card-text">
@@ -38,7 +64,8 @@
                             </p>
                             <hr>
                             <div class="d-flex justify-content-center">
-                                <a href="{{asset('assets/rulebook/'.$lomba->rulebook)}}" target="__blank" class="btn btn-secondary"><i class="fas fa-file-download mr-1"></i> Unduh RuleBook</a>
+                                <a href="{{ asset('assets/rulebook/' . $lomba->rulebook) }}" target="__blank"
+                                    class="btn btn-secondary"><i class="fas fa-file-download mr-1"></i> Unduh RuleBook</a>
                             </div>
                         </div>
                     </div>
@@ -153,13 +180,13 @@
                 <div class="contact_icon">
                     <i class="fas fa-envelope"></i>
                 </div>
-                <p>{{$web->email}}</p>
+                <p>{{ $web->email }}</p>
             </div>
             <div class="col-12 col-md-4 mb-5 mb-md-0 text-center">
                 <div class="contact_icon">
                     <i class="fas fa-phone-alt"></i>
                 </div>
-                <a href="https://wa.me/{{$web->nomor}}" target="blank">{{$web->nomor}}</a>
+                <a href="https://wa.me/{{ $web->nomor }}" target="blank">{{ $web->nomor }}</a>
             </div>
             <div class="col-12 col-md-4 mb-md-0 text-center">
                 <div class="contact_icon">

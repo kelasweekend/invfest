@@ -8,6 +8,7 @@ use App\Models\Lomba\Pendaftaran;
 use App\Models\Lomba\Timeline;
 use App\Models\Setting\MediaPartner;
 use App\Models\Setting\Pembayaran;
+use App\Models\Setting\Sponsor;
 use App\Models\Setting\Website;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -23,8 +24,9 @@ class IndexController extends Controller
         $kategori = Kategori::all();
         $timeline = Timeline::all();
         $media_partner = MediaPartner::all();
+        $sponsor = Sponsor::all();
         $web = Website::find(1);
-        return view('home.index', compact('kategori', 'timeline', 'media_partner', 'web'));
+        return view('home.index', compact('kategori','sponsor', 'timeline', 'media_partner', 'web'));
     }
 
     public function store(Request $request)
