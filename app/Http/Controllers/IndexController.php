@@ -32,7 +32,7 @@ class IndexController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email',
+            'email' => 'required|string|email|max:255|unique:pendaftarans',
             'kategori_id' => 'required',
             'nama_team' => 'required',
             'nama_ketua' => 'required',
@@ -138,7 +138,7 @@ class IndexController extends Controller
         $data = Pendaftaran::where(['invoice' => $request->invoice, 'status' => "1"])->first();
         if (empty($data)) {
             # jika data kosong maka
-            return back()->with('salah', 'Team Tidak Tersedia');
+            return back()->with('salah', 'Team Tidak Tersedia atau Belum Komfirmasi pembayaran');
         } else {
             # jika data ada maka
             $web = Website::find(1);

@@ -12,6 +12,7 @@ class Pendaftaran extends Model
     use HasFactory;
 
     protected $fillable = [
+        'email',
         'kategori_id',
         'invoice',
         'nama_team',
@@ -45,6 +46,7 @@ class Pendaftaran extends Model
                 $anggota_1 = time() . '.' . $request->berkas_anggota_1->extension();
                 $simpan = $this->create([
                     'kategori_id' => $request->kategori_id,
+                    'email' => $request->email,
                     'invoice' => substr(str_shuffle($invoice), 0, 8),
                     'nama_team' => $request->nama_team,
                     'nama_ketua' => $request->nama_ketua,
@@ -76,6 +78,7 @@ class Pendaftaran extends Model
                 $anggota_1 = time() . '.' . $request->berkas_anggota_1->extension();
                 $simpan = $this->create([
                     'kategori_id' => $request->kategori_id,
+                    'email' => $request->email,
                     'invoice' => substr(str_shuffle($invoice), 0, 8),
                     'nama_team' => $request->nama_team,
                     'nama_ketua' => $request->nama_ketua,
@@ -106,6 +109,7 @@ class Pendaftaran extends Model
                 $anggota_1 = time() . '.' . $request->berkas_anggota_1->extension();
                 $simpan = $this->create([
                     'kategori_id' => $request->kategori_id,
+                    'email' => $request->email,
                     'invoice' => substr(str_shuffle($invoice), 0, 8),
                     'nama_team' => $request->nama_team,
                     'nama_ketua' => $request->nama_ketua,
@@ -132,6 +136,7 @@ class Pendaftaran extends Model
             $anggota_1 = time() . '.' . $request->berkas_anggota_1->extension();
             $simpan = $this->create([
                 'kategori_id' => $request->kategori_id,
+                'email' => $request->email,
                 'invoice' => substr(str_shuffle($invoice), 0, 8),
                 'nama_team' => $request->nama_team,
                 'nama_ketua' => $request->nama_ketua,
@@ -158,6 +163,7 @@ class Pendaftaran extends Model
             $anggota_1 = time() . '.' . $request->berkas_anggota_1->extension();
             $simpan = $this->create([
                 'kategori_id' => $request->kategori_id,
+                'email' => $request->email,
                 'invoice' => substr(str_shuffle($invoice), 0, 8),
                 'nama_team' => $request->nama_team,
                 'nama_ketua' => $request->nama_ketua,
@@ -183,6 +189,7 @@ class Pendaftaran extends Model
             $anggota_1 = time() . '.' . $request->berkas_anggota_1->extension();
             $simpan = $this->create([
                 'kategori_id' => $request->kategori_id,
+                'email' => $request->email,
                 'invoice' => substr(str_shuffle($invoice), 0, 8),
                 'nama_team' => $request->nama_team,
                 'nama_ketua' => $request->nama_ketua,
