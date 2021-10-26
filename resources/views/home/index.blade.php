@@ -28,12 +28,12 @@
     <section id="sponsor">
         <div class="container py-5">
             <h4 class="text-center my-5 font-weight-bold">Sponsor Event</h4>
-            <div class="row">
+            <div class="row justify-content-center">
                 @foreach ($sponsor as $duit)
-                <div class="col-4 col-md-2 bg-white sponsor-item">
-                    <img src="{{asset('assets/sponsor/' . $duit->image_sponsor)}}" alt="logo"
-                        class="img-fluid mx-auto d-block rounded" />
-                </div>    
+                    <div class="col-4 col-md-2 bg-white sponsor-item">
+                        <img src="{{ asset('assets/sponsor/' . $duit->image_sponsor) }}" alt="logo"
+                            class="img-fluid mx-auto d-block rounded" />
+                    </div>
                 @endforeach
             </div>
             <div class="row">
@@ -41,7 +41,7 @@
                     <h4>Sponsored By :</h4>
                 </div> --}}
                 <div class="col-sm-12 col-md-9">
-                   
+
                 </div>
             </div>
         </div>
@@ -88,9 +88,31 @@
                 <div class="col text-white">
                     <h2>Apa itu {{ $web->title }} ?</h2>
                     <p class="mt-3">
-                        {{ $web->deskripsi }}
+                        {!! $web->deskripsi !!}
                     </p>
                     <a class="btn btn-light btn-rounded" href="{{ route('daftar') }}">Register</a>
+                </div>
+            </div>
+        </div>
+        <div class="container py-5 mt-5">
+            <div class="row">
+                <div class="col text-white">
+                    <h2>Twibbon {{ $web->title }} ?</h2>
+                    <p class="mt-3">
+                       Hallo Developer Muda, Mari kita berpartisipasi dengan 
+                       menggunakan Twibbon dari Kami dengan cara unduh twibbon dibawah ini
+                       dan posting di media sosial kamu beserta Caption yang sudah di sediakan serta
+                       jangan lupa tag kami.
+                    </p>
+                    <a class="btn btn-light btn-rounded"
+                        href="https://twb.nz/invfest6">Unduh
+                        Twibbon</a>
+                </div>
+                <div class="col-sm-12 col-md">
+                    <div class="py-2 px-2 details-img">
+                        <img src="{{ asset('frontend/img/TWIBBON.png') }}" class="img-fluid d-block mx-auto w-75"
+                            alt="alternative" />
+                    </div>
                 </div>
             </div>
         </div>

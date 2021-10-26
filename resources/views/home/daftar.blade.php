@@ -345,3 +345,18 @@
         </div>
     </section>
 @endsection
+
+@section('js-tambahan')
+    <script type="text/javascript">
+        function getval(sel) {
+            if (sel.value == "sma/smk") {
+                $("#pendamping").removeClass("d-none");
+                console.log('sma/smk :)')
+            } else {
+                $("#pendamping").addClass("d-none");
+                console.log('Universitas')
+            }
+            // alert(sel.value);
+        }
+    </script>
+@endsection

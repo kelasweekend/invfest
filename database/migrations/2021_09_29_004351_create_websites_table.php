@@ -17,7 +17,7 @@ class CreateWebsitesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('heading');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->string('nomor');
             $table->string('email');
             $table->enum('maintenance', ['0', '1']);

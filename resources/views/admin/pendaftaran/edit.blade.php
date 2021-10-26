@@ -104,7 +104,7 @@
                                                         placeholder="Tidak Ada Pendamping">
                                                 </div>
                                                 <div class="col-2">
-                                                    <a @if ($data->bukti_pembayaran != "")href="{{ asset('assets/pendamping/' . $data->berkas_pendamping) }}"@endif
+                                                    <a @if ($data->berkas_pendamping != "")href="{{ asset('assets/pendamping/' . $data->berkas_pendamping) }}"@endif
                                                         target="__blank" class="btn btn-secondary">Unduh Berkas</a>
                                                 </div>
                                             </div>
@@ -121,7 +121,7 @@
                                                         placeholder="Nama Team">
                                                 </div>
                                                 <div class="col-2">
-                                                    <a @if ($data->bukti_pembayaran != "")href="{{ asset('assets/anggota/' . $data->berkas_anggota_1) }}"@endif
+                                                    <a @if ($data->berkas_anggota_1 != "")href="{{ asset('assets/anggota/' . $data->berkas_anggota_1) }}"@endif
                                                         target="__blank" class="btn btn-secondary">Unduh Berkas</a>
                                                 </div>
                                             </div>
@@ -137,7 +137,7 @@
                                                         placeholder="Tidak Ada Anggota">
                                                 </div>
                                                 <div class="col-2">
-                                                    <a @if ($data->bukti_pembayaran != "")href="{{ asset('assets/anggota/' . $data->berkas_anggota_2) }}"@endif 
+                                                    <a @if ($data->berkas_anggota_2 != "")href="{{ asset('assets/anggota/' . $data->berkas_anggota_2) }}"@endif 
                                                         target="__blank" class="btn btn-secondary">Unduh Berkas</a>
                                                 </div>
                                             </div>

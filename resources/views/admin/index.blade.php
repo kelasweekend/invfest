@@ -40,7 +40,7 @@
                         @endforeach
                     </div>
                 @endif
-                
+
                 <div class="row">
                     <div class="col-md-3 col-sm-6 col-12">
                         <div class="info-box">
@@ -187,7 +187,7 @@
                                                     value="{{ $web->pengumpulan }}" name="pengumpulan" required>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        {{-- <div class="col-md-6">
                                             <label>Logo Atas</label>
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" name="logo_atas"
@@ -202,7 +202,7 @@
                                                     id="customFile">
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
 
                                     @if ($web->maintenance == '1')
@@ -234,4 +234,18 @@
         </section>
         <!-- /.content -->
     </div>
+@endsection
+
+@section('css-tambahan')
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+@endsection
+
+@section('js-tambahan')
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#exampleFormControlTextarea1').summernote();
+        });
+    </script>
 @endsection

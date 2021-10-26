@@ -27,7 +27,29 @@ class PendaftaranController extends Controller
                     $actionBtn = $actionBtn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-url="' . route('pendaftaran.destroy', $row->id) . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteItem"><i class="fas fa-trash"></i></a>';
                     return $actionBtn;
                 })
-                ->rawColumns(['action'])
+                ->addColumn('status', function ($row) {
+                    if ($row->status == '1') {
+                        # jika status sudah 1 maka
+                        $statusBtn = '<span class="badge badge-success">Active</span>';
+                    } else {
+                        # jika masih belum maka
+                        $statusBtn = '<span class="badge badge-danger">Non Active</span>';
+                    }
+                    
+                    return $statusBtn;
+                })
+                ->addColumn('tingkatan', function ($row) {
+                    if ($row->tingkatan == "kuliah") {
+                        # jika tingkatan sudah 1 maka
+                        $tingkatanBtn = '<i class="fas fa-graduation-cap"></i> Universitas';
+                    } else {
+                        # jika masih belum maka
+                        $tingkatanBtn = '<i class="fas fa-school"></i> Sekolah';
+                    }
+                    
+                    return $tingkatanBtn;
+                })
+                ->rawColumns(['action', 'status', 'tingkatan'])
                 ->make(true);
         }
         $kategori = Kategori::all();

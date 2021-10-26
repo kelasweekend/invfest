@@ -50,8 +50,8 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Invoice</th>
+                                            <th>Email Peserta</th>
                                             <th>Nama Team</th>
-                                            <th>Nama Ketua</th>
                                             <th>Status</th>
                                             <th>Tingkatan</th>
                                             <th>Action</th>
@@ -64,8 +64,8 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Invoice</th>
+                                            <th>Email Peserta</th>
                                             <th>Nama Team</th>
-                                            <th>Nama Ketua</th>
                                             <th>Status</th>
                                             <th>Tingkatan</th>
                                             <th>Action</th>
@@ -274,12 +274,12 @@
                         name: 'invoice'
                     },
                     {
-                        data: 'nama_team',
-                        name: 'nama_team'
+                        data: 'email',
+                        name: 'email'
                     },
                     {
-                        data: 'nama_ketua',
-                        name: 'nama_ketua'
+                        data: 'nama_team',
+                        name: 'nama_team'
                     },
                     {
                         data: 'status',
