@@ -31,7 +31,7 @@
                         <a class="nav-link" data-scroll href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-scroll href="{{route('karya')}}">upload Karya</a>
+                        <a class="nav-link" data-scroll href="{{route('karya')}}">Upload Karya</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-scroll href="#timelines">Timeline</a>

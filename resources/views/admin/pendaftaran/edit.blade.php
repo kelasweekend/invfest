@@ -71,10 +71,10 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="nama_ketua" class="col-sm-2 col-form-label">Nama Ketua</label>
+                                        <label for="nama_ketua" class="col-sm-2 col-form-label">Nomor Whatsapp</label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" disabled readonly
-                                                value="{{ $data->nama_ketua }}" id="nama_team" placeholder="Nama Team">
+                                            <input type="text" class="form-control" disabled readonly
+                                                value="{{ $data->nomor_wa }}" id="nama_team" placeholder="Nama Team">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -88,8 +88,13 @@
                                         <label for="tingkatan" class="col-sm-2 col-form-label">Tingkatan Yang
                                             diambil</label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" disabled readonly
-                                                value="{{ $data->tingkatan }}" id="nama_team" placeholder="Nama Team">
+                                            @if ($data->tingkatan == 'sma/smk')
+                                                <input type="email" class="form-control" disabled readonly value="Sekolah"
+                                                    id="nama_team" placeholder="Nama Team">
+                                            @else
+                                                <input type="email" class="form-control" disabled readonly
+                                                    value="Universitas" id="nama_team" placeholder="Nama Team">
+                                            @endif
                                         </div>
                                     </div>
                                     <hr>
@@ -104,13 +109,29 @@
                                                         placeholder="Tidak Ada Pendamping">
                                                 </div>
                                                 <div class="col-2">
-                                                    <a @if ($data->berkas_pendamping != "")href="{{ asset('assets/pendamping/' . $data->berkas_pendamping) }}"@endif
-                                                        target="__blank" class="btn btn-secondary">Unduh Berkas</a>
+                                                    <a @if ($data->berkas_pendamping != '')href="{{ asset('assets/pendamping/' . $data->berkas_pendamping) }}"@endif target="__blank"
+                                                        class="btn btn-secondary">Unduh Berkas</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <hr>
+                                    <div class="form-group row">
+                                        <label for="berkas_pendamping" class="col-sm-2 col-form-label">Nama Ketua</label>
+                                        <div class="col-sm-10">
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <input type="text" class="form-control" disabled readonly
+                                                        value="{{ $data->nama_ketua }}" id="nama_team"
+                                                        placeholder="Tidak Ada Pendamping">
+                                                </div>
+                                                <div class="col-2">
+                                                    <a href="{{ asset('assets/anggota/' . $data->berkas_ketua) }}"
+                                                        target="__blank" class="btn btn-secondary">Unduh Berkas</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group row">
                                         <label for="anggota_1" class="col-sm-2 col-form-label">Nama Anggota 1</label>
                                         <div class="col-sm-10">
@@ -121,8 +142,8 @@
                                                         placeholder="Nama Team">
                                                 </div>
                                                 <div class="col-2">
-                                                    <a @if ($data->berkas_anggota_1 != "")href="{{ asset('assets/anggota/' . $data->berkas_anggota_1) }}"@endif
-                                                        target="__blank" class="btn btn-secondary">Unduh Berkas</a>
+                                                    <a @if ($data->berkas_anggota_1 != '')href="{{ asset('assets/anggota/' . $data->berkas_anggota_1) }}"@endif target="__blank"
+                                                        class="btn btn-secondary">Unduh Berkas</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -137,8 +158,8 @@
                                                         placeholder="Tidak Ada Anggota">
                                                 </div>
                                                 <div class="col-2">
-                                                    <a @if ($data->berkas_anggota_2 != "")href="{{ asset('assets/anggota/' . $data->berkas_anggota_2) }}"@endif 
-                                                        target="__blank" class="btn btn-secondary">Unduh Berkas</a>
+                                                    <a @if ($data->berkas_anggota_2 != '')href="{{ asset('assets/anggota/' . $data->berkas_anggota_2) }}"@endif target="__blank"
+                                                        class="btn btn-secondary">Unduh Berkas</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,7 +168,8 @@
                                     <div class="form-group row">
                                         <label for="anggota_3" class="col-sm-2 col-form-label">Bukti Pembayaran</label>
                                         <div class="col-sm-10">
-                                            <a @if ($data->bukti_pembayaran != "")href="{{ asset('assets/bukti_pembayaran/' . $data->bukti_pembayaran) }}"@endif target="__blank" class="btn btn-secondary">Unduh Berkas</a>
+                                            <a @if ($data->bukti_pembayaran != '')href="{{ asset('assets/bukti_pembayaran/' . $data->bukti_pembayaran) }}"@endif target="__blank" class="btn btn-secondary">Unduh
+                                                Berkas</a>
                                         </div>
                                     </div>
                                     <div class="form-group row">

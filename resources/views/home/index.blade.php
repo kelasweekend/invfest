@@ -60,7 +60,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $lomba->nama_kategori }}</h5>
                             <p class="card-text">
-                                {{ $lomba->deskripsi }}
+                                {!! $lomba->deskripsi !!}
                             </p>
                             <hr>
                             <div class="d-flex justify-content-center">

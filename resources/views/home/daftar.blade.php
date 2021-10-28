@@ -266,9 +266,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-2">
-                                <label for="nama_ketua" class="form-label">Nama Ketua Team</label>
-                                <input type="text" name="nama_ketua" class="form-control" id="nama_ketua"
-                                    placeholder="E.g Setiawan" autocomplete="off" required>
+                                <label for="nomor_wa" class="form-label">Nomor Wa Ketua</label>
+                                <input type="number" name="nomor_wa" class="form-control" id="nomor_wa"
+                                    placeholder="E.g 0819xxx" autocomplete="off" required>
                             </div>
                         </div>
                     </div>
@@ -315,15 +315,27 @@
                         </div>
                     </div>
                     <div class="mb-2">
+                        <div class="ketua mb-2">
+                            <p class="text-muted mb-2">Ketua Team</p>
+                            <div class="d-flex justify-content-between">
+                                <input type="text" name="nama_ketua" class="form-control mr-2" id="nama_ketua"
+                                    placeholder="E.g Budi ketua" autocomplete="off" required>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="berkas_ketua" id="berkas_ketua"
+                                        required>
+                                    <label class="custom-file-label" for="berkas_ketua">upload berkas</label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="anggota_1">
                             <p class="text-muted mb-2">Anggota 1</p>
                             <div class="d-flex justify-content-between">
                                 <input type="text" name="anggota_1" class="form-control mr-2" id="anggota_1"
-                                    placeholder="E.g Budi skuy" autocomplete="off" required>
+                                    placeholder="E.g Budi satu" autocomplete="off" required>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="berkas_anggota_1" id="customFile"
+                                    <input type="file" class="custom-file-input" name="berkas_anggota_1" id="berkas_anggota_1"
                                         required>
-                                    <label class="custom-file-label" for="customFile">upload berkas</label>
+                                    <label class="custom-file-label" for="berkas_anggota_1">upload berkas</label>
                                 </div>
                             </div>
                         </div>
@@ -331,10 +343,10 @@
                             <p class="text-muted mb-2">Anggota 2</p>
                             <div class="d-flex justify-content-between">
                                 <input type="text" name="anggota_2" class="form-control mr-2" id="anggota_2"
-                                    placeholder="E.g Budi skuy" autocomplete="off">
+                                    placeholder="E.g Budi dua" autocomplete="off">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="berkas_anggota_2" id="customFile">
-                                    <label class="custom-file-label" for="customFile">upload berkas</label>
+                                    <input type="file" class="custom-file-input" name="berkas_anggota_2" id="berkas_anggota_2">
+                                    <label class="custom-file-label" for="berkas_anggota_2">upload berkas</label>
                                 </div>
                             </div>
                         </div>

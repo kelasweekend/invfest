@@ -39,8 +39,8 @@ class CreatePendaftaransTable extends Migration
             $table->string('anggota_2')->nullable();
             $table->string('berkas_anggota_2')->nullable();
             // anggota 3
-            $table->string('anggota_3')->nullable();
-            $table->string('berkas_anggota_3')->nullable();
+            $table->string('nomor_wa')->nullable();
+            $table->string('berkas_ketua')->nullable();
             // status pendaftaran ( Setuju, Pending )
             $table->enum('status', [0, 1]);
             // bukti pembayaran

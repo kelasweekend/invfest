@@ -38,15 +38,15 @@ class IndexController extends Controller
             'nama_ketua' => 'required',
             'instansi' => 'required',
             'tingkatan' => 'required',
+            'nomor_wa' => 'required',
             'berkas_pemdamping' => 'image|mimes:jpeg,png,jpg|max:2048',
             'berkas_anggota_1' => 'image|mimes:jpeg,png,jpg|max:2048',
             'berkas_anggota_2' => 'image|mimes:jpeg,png,jpg|max:2048',
-            'berkas_anggota_3' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'berkas_ketua' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $this->daftar->buat($request);
-        // $invoice = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        // dd(substr(str_shuffle($invoice), 0, 8));
+        // dd($request->all());
         return redirect()->route('sukses_daftar');
     }
 

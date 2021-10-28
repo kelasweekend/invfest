@@ -35,7 +35,7 @@ class PendaftaranController extends Controller
                         # jika masih belum maka
                         $statusBtn = '<span class="badge badge-danger">Non Active</span>';
                     }
-                    
+
                     return $statusBtn;
                 })
                 ->addColumn('tingkatan', function ($row) {
@@ -46,7 +46,7 @@ class PendaftaranController extends Controller
                         # jika masih belum maka
                         $tingkatanBtn = '<i class="fas fa-school"></i> Sekolah';
                     }
-                    
+
                     return $tingkatanBtn;
                 })
                 ->rawColumns(['action', 'status', 'tingkatan'])
@@ -62,17 +62,18 @@ class PendaftaranController extends Controller
             'kategori_id' => 'required',
             'nama_team' => 'required',
             'nama_ketua' => 'required',
+            'nomor_wa' => 'required',
             'instansi' => 'required',
             'tingkatan' => 'required',
             'berkas_pemdamping' => 'image|mimes:jpeg,png,jpg|max:2048',
             'berkas_anggota_1' => 'image|mimes:jpeg,png,jpg|max:2048',
             'berkas_anggota_2' => 'image|mimes:jpeg,png,jpg|max:2048',
-            'berkas_anggota_3' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'berkas_ketua' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $this->daftar->buat($request);
         // $invoice = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        // dd(substr(str_shuffle($invoice), 0, 8));
+
         return back();
     }
 
@@ -112,15 +113,52 @@ class PendaftaranController extends Controller
         }
     }
 
-    public function destroy($invoice)
+    public function destroy($id)
     {
-        $data = Pendaftaran::where('invoice', $invoice)->first();
-        if (empty($data)) {
-            # jika data kosong maka
-            return response()->json(['error' => 'Data Tidak tersedia']);
+        $data = Pendaftaran::find($id);
+        # jika data ada maka
+        if ($data->berkas_pendamping == "") {
+            # jika ada pembimbing kosong maka
+            if ($data->berkas_anggota_2 == "") {
+                # jika ada berkas tidak ada dan anggota 2 tidak ada maka
+                $ketua = public_path('assets/anggota/' . $data->berkas_ketua);
+                $anggota_1 = public_path('assets/anggota/' . $data->berkas_anggota_1);
+                unlink($ketua);
+                unlink($anggota_1);
+            } else {
+                # jika anggota 2 ada tetapi tidak ada pembimbing maka
+                $ketua = public_path('assets/anggota/' . $data->berkas_ketua);
+                $anggota_1 = public_path('assets/anggota/' . $data->berkas_anggota_1);
+                unlink($ketua);
+                unlink($anggota_1);
+                $anggota_2 = public_path('assets/anggota/' . $data->berkas_anggota_2);
+                unlink($anggota_2);
+            }
+            
         } else {
-            # jika data ada maka
-            return response()->json(['success' => 'Data deleted successfully']);
+            # jika ada pembimbing maka
+            if ($data->berkas_anggota_2 == "") {
+                # jika ada berkas tidak ada dan anggota 2 tidak ada maka
+                $ketua = public_path('assets/anggota/' . $data->berkas_ketua);
+                $anggota_1 = public_path('assets/anggota/' . $data->berkas_anggota_1);
+                unlink($ketua);
+                unlink($anggota_1);
+                $pendamping = public_path('assets/pendamping/' . $data->berkas_pendamping);
+                unlink($pendamping);
+            } else {
+                # jika anggota 2 ada tetapi tidak ada pembimbing maka
+                $ketua = public_path('assets/anggota/' . $data->berkas_ketua);
+                $anggota_1 = public_path('assets/anggota/' . $data->berkas_anggota_1);
+                unlink($ketua);
+                unlink($anggota_1);
+                $anggota_2 = public_path('assets/anggota/' . $data->berkas_anggota_2);
+                unlink($anggota_2);
+                $pendamping = public_path('assets/pendamping/' . $data->berkas_pendamping);
+                unlink($pendamping);
+            }
         }
+
+        $data->delete();
+        return response()->json(['success' => 'Data deleted successfully']);
     }
 }

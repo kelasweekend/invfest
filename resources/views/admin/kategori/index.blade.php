@@ -26,6 +26,21 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
+                @if (Session::has('errors'))
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            {{ $error }}<br />
+                        @endforeach
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                    </div>
+                @endif
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -78,7 +93,7 @@
                 </div>
                 <div class="modal-body">
                     <form method="POST" enctype="multipart/form-data" id="laravel-ajax-file-upload"
-                    action="javascript:void(0)">
+                        action="javascript:void(0)">
                         <div class="mb-2">
                             <label for="nama_kategori" class="form-label">Title </label>
                             <input type="text" name="nama_kategori" class="form-control" id="nama_kategori"
@@ -108,10 +123,28 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="viewmodal" tabindex="-1" role="dialog" aria-labelledby="viewmodalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewmodalLabel">Edit Rule Book</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 
 @section('css-tambahan')
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
@@ -119,6 +152,11 @@
 
 @section('js-tambahan')
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('textarea').summernote();
+        });
+    </script>
     <!-- DataTables  & Plugins -->
     <script src="{{ asset('backend/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -195,41 +233,6 @@
                     }
                 });
             });
-
-            // $('#saveBtn').click(function(e) {
-            //     e.preventDefault();
-            //     $.ajax({
-            //         data: $('#ItemForm').serialize(),
-            //         url: "{{ route('kategori.store') }}",
-            //         type: "POST",
-            //         dataType: 'json',
-            //         success: function(response) {
-            //             if (response.success) {
-            //                 Swal.fire({
-            //                     icon: "success",
-            //                     title: "Selamat",
-            //                     text: response.success
-            //                 });
-            //                 $('#ItemForm').trigger("reset");
-            //                 $('#ajaxModel').modal('hide');
-            //                 table.draw();
-            //             } else {
-            //                 Swal.fire({
-            //                     icon: "error",
-            //                     title: "Mohon Maaf !",
-            //                     text: response.error
-            //                 });
-            //             }
-            //         },
-            //         error: function() {
-            //             Swal.fire({
-            //                 icon: "error",
-            //                 title: "Oops...",
-            //                 text: "Something went wrong!"
-            //             });
-            //         }
-            //     });
-            // });
             $('body').on('click', '.deleteItem', function() {
 
                 var Item_id = $(this).data("id");
@@ -275,6 +278,19 @@
                         });
                     }
                 })
+            });
+        });
+
+        $('body').on('click', '.edit', function() {
+            console.log($(this).data('url'))
+            let url = $(this).data('url')
+            $.ajax({
+                type: "GET",
+                url: `${url}`,
+                success: function(data) {
+                    $('#viewmodal').find('.modal-body').html(data)
+                    $('#viewmodal').modal('show')
+                }
             });
         });
     </script>
